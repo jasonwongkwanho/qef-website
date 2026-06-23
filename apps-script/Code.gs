@@ -7,7 +7,7 @@ const TABS = {
   metrics: 'QEF_Metrics'
 };
 
-const PHOTO_ROOT_FOLDER_ID = '16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS';
+const PHOTO_ROOT_FOLDER_ID = '1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB';
 const MAX_FOLDER_PHOTOS_PER_PAGE = 12;
 const MAX_FOLDER_PHOTO_DEPTH = 3;
 

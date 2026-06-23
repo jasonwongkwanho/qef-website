@@ -7,7 +7,7 @@ window.QEF_SITE_CONFIG = {
   footerText: "QEF 計劃公開介紹網站",
 
   // Apps Script 部署後，將 /exec URL 貼在這裡。
-  apiBaseUrl: "",
+  apiBaseUrl: "https://script.google.com/macros/s/AKfycbyHiQHsyrm-zoI8qfRU_gc9CCVB-0PT-KFfYxaLzwRWoaDv-N4r7xGHvEunjEA2gl_m/exec",
   apiMode: "jsonp",
   useSampleDataWhenApiMissing: true,
 
@@ -18,8 +18,8 @@ window.QEF_SITE_CONFIG = {
   },
 
   googleDrive: {
-    photoRootFolderId: "16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS",
-    photoRootFolderUrl: "https://drive.google.com/drive/folders/16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS"
+    photoRootFolderId: "1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB",
+    photoRootFolderUrl: "https://drive.google.com/drive/folders/1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB"
   },
 
   sections: [
