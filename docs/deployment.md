@@ -10,7 +10,7 @@
 6. Confirm the execution account can read the QEF photo root folder:
 
 ```text
-https://drive.google.com/drive/folders/1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB
+https://drive.google.com/drive/folders/16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS
 ```
 
 The API reads image files from `QEF_Pages.相片資料夾ID`, including nested child

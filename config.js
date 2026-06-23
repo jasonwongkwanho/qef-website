@@ -12,14 +12,14 @@ window.QEF_SITE_CONFIG = {
   useSampleDataWhenApiMissing: true,
 
   googleSheet: {
-    spreadsheetId: "1CmPaRF6o9K2Gjx2Ga59yRdao6KPbWrnU8tCKqsnt1m8",
-    spreadsheetUrl: "https://docs.google.com/spreadsheets/d/1CmPaRF6o9K2Gjx2Ga59yRdao6KPbWrnU8tCKqsnt1m8/edit",
+    spreadsheetId: "1hplWteuEJGSkNrn0S2AyzHoDxw_DJK_DW_XRyHL4FQM",
+    spreadsheetUrl: "https://docs.google.com/spreadsheets/d/1hplWteuEJGSkNrn0S2AyzHoDxw_DJK_DW_XRyHL4FQM/edit",
     tabs: ["QEF_Settings", "QEF_Pages", "QEF_Photos", "QEF_Metrics"]
   },
 
   googleDrive: {
-    photoRootFolderId: "1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB",
-    photoRootFolderUrl: "https://drive.google.com/drive/folders/1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB"
+    photoRootFolderId: "16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS",
+    photoRootFolderUrl: "https://drive.google.com/drive/folders/16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS"
   },
 
   sections: [

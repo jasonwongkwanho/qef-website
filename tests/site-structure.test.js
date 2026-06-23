@@ -34,9 +34,9 @@ assert.ok(config.sections.length >= 5, "site should include homepage plus at lea
 assert.ok(config.sections.some((section) => section.id === "home"), "home section should exist");
 assert.ok(config.sections.every((section) => section.title && section.summary), "each section needs title and summary");
 assert.ok(config.googleSheet, "config should document the Google Sheet backend");
-assert.strictEqual(config.googleSheet.spreadsheetId, "1CmPaRF6o9K2Gjx2Ga59yRdao6KPbWrnU8tCKqsnt1m8");
+assert.strictEqual(config.googleSheet.spreadsheetId, "1hplWteuEJGSkNrn0S2AyzHoDxw_DJK_DW_XRyHL4FQM");
 assert.deepStrictEqual(Array.from(config.googleSheet.tabs), ["QEF_Settings", "QEF_Pages", "QEF_Photos", "QEF_Metrics"]);
-assert.strictEqual(config.googleDrive.photoRootFolderId, "1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB");
+assert.strictEqual(config.googleDrive.photoRootFolderId, "16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS");
 assert.ok(config.photos.some((photo) => photo.imageId), "fallback photos should include real Drive image IDs");
 assert.ok(
   config.photos.some((photo) => photo.pageId === "light-food-prep" && photo.imageId),

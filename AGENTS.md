@@ -39,7 +39,7 @@ Google Drive：相片圖片 ID 或相片資料夾 ID
 Spreadsheet ID：
 
 ```text
-1CmPaRF6o9K2Gjx2Ga59yRdao6KPbWrnU8tCKqsnt1m8
+1hplWteuEJGSkNrn0S2AyzHoDxw_DJK_DW_XRyHL4FQM
 ```
 
 QEF 專用工作頁：

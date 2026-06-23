@@ -4,6 +4,7 @@
 
 - Created initial QEF website scaffold.
 - Added Google Sheet backend tabs: `QEF_Settings`, `QEF_Pages`, `QEF_Photos`, `QEF_Metrics`.
+- Moved QEF backend data into a separate Google Sheet instead of using the photo gallery album spreadsheet.
 - Added Apps Script read-only API reference.
 - Added static structure test.
 - Added support for QEF course-module pages backed by Drive subfolders.

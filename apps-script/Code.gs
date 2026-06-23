@@ -1,4 +1,4 @@
-const SPREADSHEET_ID = '1CmPaRF6o9K2Gjx2Ga59yRdao6KPbWrnU8tCKqsnt1m8';
+const SPREADSHEET_ID = '1hplWteuEJGSkNrn0S2AyzHoDxw_DJK_DW_XRyHL4FQM';
 
 const TABS = {
   settings: 'QEF_Settings',
@@ -7,7 +7,7 @@ const TABS = {
   metrics: 'QEF_Metrics'
 };
 
-const PHOTO_ROOT_FOLDER_ID = '1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB';
+const PHOTO_ROOT_FOLDER_ID = '16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS';
 const MAX_FOLDER_PHOTOS_PER_PAGE = 12;
 const MAX_FOLDER_PHOTO_DEPTH = 3;
 

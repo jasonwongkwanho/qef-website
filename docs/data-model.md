@@ -25,7 +25,7 @@
 | `內部備註` | Internal note, not shown |
 
 Photo folders may point to a course-level folder under the QEF photo root folder
-`1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB`. The Apps Script API reads image files in
+`16PN5Zxnap5018OxIcxP7_FBSCxUFhXqS`. The Apps Script API reads image files in
 that folder and nested child folders, then returns public thumbnail URLs for the
 frontend.
 
