@@ -32,6 +32,15 @@ The frontend can also run without an API URL by falling back to sample content i
 
 The API supports JSON and JSONP. GitHub Pages should use JSONP for the same deployment style as `shine-photo-gallery`.
 
+The frontend renders sample content immediately while the live Apps Script payload loads. This keeps the public page usable during Apps Script cold starts or long Drive scans; the live payload replaces the sample content when it arrives.
+
+`apps-script/Code.gs` uses Apps Script `CacheService` for:
+
+- full `site` payload cache, about 10 minutes;
+- per-page folder photo metadata cache, up to 6 hours.
+
+Use `clearQefCache()` or `warmQefSiteCache()` in the Apps Script editor after redeploying the backend or changing Drive folder contents.
+
 ## Security
 
 - The API is read-only.

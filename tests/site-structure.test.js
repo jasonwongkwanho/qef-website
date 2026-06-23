@@ -37,6 +37,7 @@ assert.ok(config.googleSheet, "config should document the Google Sheet backend")
 assert.strictEqual(config.googleSheet.spreadsheetId, "1hplWteuEJGSkNrn0S2AyzHoDxw_DJK_DW_XRyHL4FQM");
 assert.deepStrictEqual(Array.from(config.googleSheet.tabs), ["QEF_Settings", "QEF_Pages", "QEF_Photos", "QEF_Metrics"]);
 assert.strictEqual(config.googleDrive.photoRootFolderId, "1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB");
+assert.ok(config.apiTimeoutMs >= 90000, "live Apps Script API timeout should allow slow cold starts");
 assert.ok(config.photos.some((photo) => photo.imageId), "fallback photos should include real Drive image IDs");
 assert.ok(
   config.photos.some((photo) => photo.pageId === "light-food-prep" && photo.imageId),
@@ -47,9 +48,17 @@ assert.match(css, /@media \(max-width: 760px\)/, "mobile breakpoint should exist
 assert.match(css, /\.photo-mosaic/, "photo mosaic styles should exist");
 
 assert.match(app, /window\.QefSiteTest/, "app should expose test hooks");
+assert.match(app, /DEFAULT_JSONP_TIMEOUT_MS/, "frontend should use a named JSONP timeout");
+assert.doesNotMatch(app, /}, 20000\)/, "frontend should not hard-code a 20 second API timeout");
+assert.match(app, /buildSampleSiteData/, "frontend should be able to render sample data before live API returns");
+assert.match(app, /showWarning/, "frontend should keep fallback content visible on slow API failures");
 assert.match(codeGs, /QEF_Pages/);
 assert.match(codeGs, /doGet/);
 assert.match(codeGs, /jsonp/);
 assert.match(codeGs, /collectImagesFromFolder_/, "Apps Script should collect nested Drive folder photos");
+assert.match(codeGs, /CacheService\.getScriptCache/, "Apps Script should cache expensive site payloads");
+assert.match(codeGs, /getCachedSitePayload_/, "Apps Script should cache the site API response");
+assert.match(codeGs, /clearQefCache/, "Apps Script should expose a manual cache clear helper");
+assert.match(codeGs, /warmQefSiteCache/, "Apps Script should expose a manual cache warm helper");
 
 console.log("QEF static site structure checks passed.");

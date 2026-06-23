@@ -9,6 +9,7 @@ window.QEF_SITE_CONFIG = {
   // Apps Script 部署後，將 /exec URL 貼在這裡。
   apiBaseUrl: "https://script.google.com/macros/s/AKfycbyHiQHsyrm-zoI8qfRU_gc9CCVB-0PT-KFfYxaLzwRWoaDv-N4r7xGHvEunjEA2gl_m/exec",
   apiMode: "jsonp",
+  apiTimeoutMs: 90000,
   useSampleDataWhenApiMissing: true,
 
   googleSheet: {

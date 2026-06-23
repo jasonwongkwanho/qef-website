@@ -10,20 +10,49 @@ const TABS = {
 const PHOTO_ROOT_FOLDER_ID = '1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB';
 const MAX_FOLDER_PHOTOS_PER_PAGE = 12;
 const MAX_FOLDER_PHOTO_DEPTH = 3;
+const CACHE_VERSION = '2026-06-23-v1';
+const SITE_CACHE_KEY = 'qef-site:' + CACHE_VERSION;
+const SITE_CACHE_TTL_SECONDS = 600;
+const FOLDER_PHOTO_CACHE_TTL_SECONDS = 21600;
 
 function doGet(e) {
   const params = (e && e.parameter) || {};
   const action = params.action || 'site';
 
   try {
-    const payload = action === 'health'
-      ? { ok: true, service: 'qef-site-api', tabs: TABS, photoRootFolderId: PHOTO_ROOT_FOLDER_ID }
-      : getSitePayload_();
+    let payload;
+
+    if (action === 'health') {
+      payload = getHealthPayload_();
+    } else if (action === 'site') {
+      payload = getCachedSitePayload_();
+    } else {
+      payload = { ok: false, error: 'Unknown action: ' + action };
+    }
 
     return output_(payload, params.callback);
   } catch (error) {
     return output_({ ok: false, error: String(error && error.message || error) }, params.callback);
   }
+}
+
+function getHealthPayload_() {
+  return {
+    ok: true,
+    service: 'qef-site-api',
+    tabs: TABS,
+    photoRootFolderId: PHOTO_ROOT_FOLDER_ID,
+    cacheVersion: CACHE_VERSION
+  };
+}
+
+function getCachedSitePayload_() {
+  const cached = getCachedJson_(SITE_CACHE_KEY);
+  if (cached) return cached;
+
+  const payload = getSitePayload_();
+  putCachedJson_(SITE_CACHE_KEY, payload, SITE_CACHE_TTL_SECONDS);
+  return payload;
 }
 
 function getSitePayload_() {
@@ -128,18 +157,17 @@ function collectFolderPhotos_(pages) {
     if (!page.folderId) return;
 
     try {
-      const folder = DriveApp.getFolderById(page.folderId);
-      const imageFiles = collectImagesFromFolder_(folder, 0, MAX_FOLDER_PHOTO_DEPTH, MAX_FOLDER_PHOTOS_PER_PAGE);
+      const imageFiles = getCachedFolderPhotoFiles_(page);
 
       imageFiles.forEach(function (file, index) {
-        const imageId = file.getId();
+        const imageId = file.imageId;
         photos.push({
           id: page.id + '-' + imageId,
           pageId: page.id,
           imageId,
           thumbnailUrl: makeThumbnailUrl_(imageId),
-          caption: buildPhotoCaption_(page.title, file.getName()),
-          order: 1000 + index,
+          caption: buildPhotoCaption_(page.title, file.fileName),
+          order: Number(file.order || 1000 + index),
           published: true
         });
       });
@@ -149,6 +177,36 @@ function collectFolderPhotos_(pages) {
   });
 
   return photos;
+}
+
+function getCachedFolderPhotoFiles_(page) {
+  const cacheKey = buildFolderPhotoCacheKey_(page);
+  const cached = getCachedJson_(cacheKey);
+  if (Array.isArray(cached)) return cached;
+
+  const folder = DriveApp.getFolderById(page.folderId);
+  const imageFiles = collectImagesFromFolder_(folder, 0, MAX_FOLDER_PHOTO_DEPTH, MAX_FOLDER_PHOTOS_PER_PAGE);
+  const photoFiles = imageFiles.map(function (file, index) {
+    return {
+      imageId: file.getId(),
+      fileName: file.getName(),
+      order: 1000 + index
+    };
+  });
+
+  putCachedJson_(cacheKey, photoFiles, FOLDER_PHOTO_CACHE_TTL_SECONDS);
+  return photoFiles;
+}
+
+function buildFolderPhotoCacheKey_(page) {
+  return [
+    'qef-folder',
+    CACHE_VERSION,
+    page.id,
+    page.folderId,
+    MAX_FOLDER_PHOTOS_PER_PAGE,
+    MAX_FOLDER_PHOTO_DEPTH
+  ].join(':');
 }
 
 function collectImagesFromFolder_(folder, depth, maxDepth, maxPhotos) {
@@ -179,6 +237,52 @@ function collectImagesFromFolder_(folder, depth, maxDepth, maxPhotos) {
   }
 
   return images;
+}
+
+function clearQefCache() {
+  const cache = CacheService.getScriptCache();
+  const keys = [SITE_CACHE_KEY];
+
+  try {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const pages = readPages_(ss.getSheetByName(TABS.pages));
+    pages.forEach(function (page) {
+      if (page.folderId) keys.push(buildFolderPhotoCacheKey_(page));
+    });
+  } catch (error) {
+    // If Sheet access fails, still clear the site cache key.
+  }
+
+  cache.removeAll(keys);
+  return { ok: true, removedKeys: keys.length };
+}
+
+function warmQefSiteCache() {
+  clearQefCache();
+  const payload = getCachedSitePayload_();
+  return {
+    ok: true,
+    pages: payload.pages.length,
+    photos: payload.photos.length,
+    metrics: payload.metrics.length
+  };
+}
+
+function getCachedJson_(key) {
+  try {
+    const raw = CacheService.getScriptCache().get(key);
+    return raw ? JSON.parse(raw) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function putCachedJson_(key, value, ttlSeconds) {
+  try {
+    CacheService.getScriptCache().put(key, JSON.stringify(value), ttlSeconds);
+  } catch (error) {
+    // Cache writes are best effort; API output should still work without cache.
+  }
 }
 
 function readObjects_(sheet) {

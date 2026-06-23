@@ -3,6 +3,7 @@
 
   const CONFIG = window.QEF_SITE_CONFIG || {};
   const PLACEHOLDER_API = "";
+  const DEFAULT_JSONP_TIMEOUT_MS = 90000;
 
   const state = {
     settings: {},
@@ -17,16 +18,28 @@
   function init() {
     cacheElements();
     state.activeSectionId = getActiveSectionId(window.location.search);
-    showLoading();
+
+    if (shouldRenderSampleWhileApiLoads()) {
+      renderSiteData(buildSampleSiteData());
+      showStatus(
+        "is-loading",
+        "正在讀取最新內容",
+        "Google 相片資料較多，可能需時約 1 分鐘；現先顯示網站預設內容。"
+      );
+    } else {
+      showLoading();
+    }
 
     loadSiteData()
       .then(function (data) {
-        applyData(data);
-        renderShell();
-        renderPage();
+        renderSiteData(data);
       })
       .catch(function (error) {
-        showError(error.message || "未能載入 QEF 計劃資料。");
+        if (shouldRenderSampleWhileApiLoads()) {
+          showWarning("暫時未能連線至 Google Sheet，頁面已先顯示預設內容。稍後重新整理可再次嘗試。");
+        } else {
+          showError(error.message || "未能載入 QEF 計劃資料。");
+        }
       });
   }
 
@@ -53,22 +66,36 @@
     }
 
     if (CONFIG.useSampleDataWhenApiMissing) {
-      return Promise.resolve({
-        ok: true,
-        settings: {
-          site_title: CONFIG.siteTitle,
-          school_name_zh: CONFIG.schoolNameZh,
-          school_name_en: CONFIG.schoolNameEn,
-          site_subtitle: CONFIG.siteSubtitle,
-          plan_title: CONFIG.planTitle
-        },
-        pages: CONFIG.sections || [],
-        photos: CONFIG.photos || [],
-        metrics: CONFIG.metrics || []
-      });
+      return Promise.resolve(buildSampleSiteData());
     }
 
     return Promise.reject(new Error("尚未設定 Apps Script API URL。"));
+  }
+
+  function shouldRenderSampleWhileApiLoads() {
+    return Boolean(CONFIG.apiBaseUrl && CONFIG.apiBaseUrl !== PLACEHOLDER_API && CONFIG.useSampleDataWhenApiMissing);
+  }
+
+  function buildSampleSiteData() {
+    return {
+      ok: true,
+      settings: {
+        site_title: CONFIG.siteTitle,
+        school_name_zh: CONFIG.schoolNameZh,
+        school_name_en: CONFIG.schoolNameEn,
+        site_subtitle: CONFIG.siteSubtitle,
+        plan_title: CONFIG.planTitle
+      },
+      pages: CONFIG.sections || [],
+      photos: CONFIG.photos || [],
+      metrics: CONFIG.metrics || []
+    };
+  }
+
+  function renderSiteData(data) {
+    applyData(data);
+    renderShell();
+    renderPage();
   }
 
   function buildApiUrl(action) {
@@ -88,10 +115,11 @@
       const callback = "qef_jsonp_" + Date.now() + "_" + Math.random().toString(36).slice(2);
       const script = document.createElement("script");
       const separator = url.includes("?") ? "&" : "?";
+      const timeoutMs = Number(CONFIG.apiTimeoutMs || DEFAULT_JSONP_TIMEOUT_MS);
       const timer = window.setTimeout(function () {
         cleanup();
         reject(new Error("Apps Script API 載入逾時。"));
-      }, 20000);
+      }, timeoutMs);
 
       function cleanup() {
         window.clearTimeout(timer);
@@ -451,6 +479,19 @@
     if (els.pageView) els.pageView.hidden = true;
   }
 
+  function showWarning(message) {
+    showStatus("is-warning", "暫時顯示預設內容", message);
+    if (els.pageView) els.pageView.hidden = false;
+  }
+
+  function showStatus(statusClass, title, message) {
+    if (!els.status) return;
+
+    els.status.hidden = false;
+    els.status.className = "status " + statusClass;
+    els.status.innerHTML = `<strong>${escapeHtml(title)}</strong><span>${escapeHtml(message)}</span>`;
+  }
+
   function setText(element, value) {
     if (element) element.textContent = value || "";
   }
@@ -475,6 +516,7 @@
   });
 
   window.QefSiteTest = {
+    buildSampleSiteData,
     driveThumbnailUrl,
     findSection,
     getActiveSectionId,

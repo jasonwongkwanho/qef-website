@@ -29,6 +29,11 @@ Photo folders may point to a course-level folder under the QEF photo root folder
 that folder and nested child folders, then returns public thumbnail URLs for the
 frontend.
 
+Folder photo scans are cached per page/folder for up to 6 hours to avoid slow
+Drive traversal on every public page load. After changing Drive folder contents,
+run `clearQefCache()` or `warmQefSiteCache()` in the Apps Script editor if the
+website must update immediately.
+
 ## `QEF_Photos`
 
 | Column | Purpose |
@@ -44,6 +49,10 @@ frontend.
 Use this tab for curated representative photos, especially top-level pages that
 do not have their own course folder. Rows in `QEF_Photos` are returned before
 auto-collected folder photos.
+
+Sheet content is included in the cached `site` payload for about 10 minutes.
+Run `clearQefCache()` after urgent Sheet edits if the public website must refresh
+before normal cache expiry.
 
 ## `QEF_Metrics`
 

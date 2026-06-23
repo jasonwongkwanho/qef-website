@@ -339,6 +339,13 @@ img {
   background: #fff5f2;
 }
 
+.status.is-warning,
+.status.is-loading {
+  border-color: rgba(200, 148, 47, 0.34);
+  color: #765112;
+  background: #fffaf0;
+}
+
 .intro-layout,
 .detail-layout {
   display: grid;

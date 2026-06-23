@@ -23,8 +23,8 @@ Google Drive 圖片 ID 或相片資料夾 ID
 | `index.html` | 前台 HTML 結構 |
 | `config.js` | 網站設定、Google Sheet 後台資料、示例 fallback |
 | `assets/styles.css` | 前台視覺及 responsive 樣式 |
-| `assets/app.js` | API 載入、分頁切換、內容及相片渲染 |
-| `apps-script/Code.gs` | Apps Script read-only API 參考碼 |
+| `assets/app.js` | API 載入、分頁切換、內容及相片渲染；API 載入較慢時先顯示示例內容 |
+| `apps-script/Code.gs` | Apps Script read-only API 參考碼；包含整站及相片資料夾快取 |
 | `tests/site-structure.test.js` | 靜態結構檢查 |
 
 ## Google Sheet 後台
@@ -48,8 +48,11 @@ Spreadsheet ID：
 
 1. 將 `apps-script/Code.gs` 貼到 Google Apps Script 專案。
 2. 部署為 Web App，權限使用可讀取該 Google Sheet 的執行身份。
-3. 取得 `/exec` URL。
-4. 將 URL 填入 `config.js` 的 `apiBaseUrl`。
-5. 將網站推到 GitHub Pages。
+3. 在 Apps Script 編輯器執行 `warmQefSiteCache()`，先建立整站快取。
+4. 取得 `/exec` URL。
+5. 將 URL 填入 `config.js` 的 `apiBaseUrl`。
+6. 將網站推到 GitHub Pages。
 
 如未設定 `apiBaseUrl`，前台會使用 `config.js` 內的示例資料，方便先預覽設計。
+
+已設定 `apiBaseUrl` 時，前台會先顯示示例內容，等 Apps Script API 回傳後再換成 Google Sheet 最新內容。Apps Script 會快取 `site` payload 約 10 分鐘，相片資料夾掃描結果最多 6 小時；如剛修改相片資料夾或重新部署，可在 Apps Script 執行 `clearQefCache()` 或 `warmQefSiteCache()`。
