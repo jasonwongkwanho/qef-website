@@ -24,6 +24,11 @@
 | `公開顯示` | Checkbox; TRUE rows are public |
 | `內部備註` | Internal note, not shown |
 
+Photo folders may point to a course-level folder under the QEF photo root folder
+`1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB`. The Apps Script API reads image files in
+that folder and nested child folders, then returns public thumbnail URLs for the
+frontend.
+
 ## `QEF_Photos`
 
 | Column | Purpose |
@@ -35,6 +40,10 @@
 | `排序` | Order within page |
 | `公開顯示` | Checkbox; TRUE rows are public |
 | `內部備註` | Internal note, not shown |
+
+Use this tab for curated representative photos, especially top-level pages that
+do not have their own course folder. Rows in `QEF_Photos` are returned before
+auto-collected folder photos.
 
 ## `QEF_Metrics`
 

@@ -7,13 +7,17 @@ const TABS = {
   metrics: 'QEF_Metrics'
 };
 
+const PHOTO_ROOT_FOLDER_ID = '1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB';
+const MAX_FOLDER_PHOTOS_PER_PAGE = 12;
+const MAX_FOLDER_PHOTO_DEPTH = 3;
+
 function doGet(e) {
   const params = (e && e.parameter) || {};
   const action = params.action || 'site';
 
   try {
     const payload = action === 'health'
-      ? { ok: true, service: 'qef-site-api', tabs: TABS }
+      ? { ok: true, service: 'qef-site-api', tabs: TABS, photoRootFolderId: PHOTO_ROOT_FOLDER_ID }
       : getSitePayload_();
 
     return output_(payload, params.callback);
@@ -125,30 +129,56 @@ function collectFolderPhotos_(pages) {
 
     try {
       const folder = DriveApp.getFolderById(page.folderId);
-      const files = folder.getFiles();
-      let order = 1000;
+      const imageFiles = collectImagesFromFolder_(folder, 0, MAX_FOLDER_PHOTO_DEPTH, MAX_FOLDER_PHOTOS_PER_PAGE);
 
-      while (files.hasNext()) {
-        const file = files.next();
-        if (!isImageFile_(file)) continue;
-
+      imageFiles.forEach(function (file, index) {
         const imageId = file.getId();
         photos.push({
           id: page.id + '-' + imageId,
           pageId: page.id,
           imageId,
           thumbnailUrl: makeThumbnailUrl_(imageId),
-          caption: page.title,
-          order: order++,
+          caption: buildPhotoCaption_(page.title, file.getName()),
+          order: 1000 + index,
           published: true
         });
-      }
+      });
     } catch (error) {
       // Folder access is optional; page content still works when folder photos are unavailable.
     }
   });
 
   return photos;
+}
+
+function collectImagesFromFolder_(folder, depth, maxDepth, maxPhotos) {
+  const images = [];
+  const files = folder.getFiles();
+
+  while (files.hasNext() && images.length < maxPhotos) {
+    const file = files.next();
+    if (isImageFile_(file)) images.push(file);
+  }
+
+  if (depth >= maxDepth || images.length >= maxPhotos) {
+    return images;
+  }
+
+  const childFolders = folder.getFolders();
+  while (childFolders.hasNext() && images.length < maxPhotos) {
+    const childImages = collectImagesFromFolder_(
+      childFolders.next(),
+      depth + 1,
+      maxDepth,
+      maxPhotos - images.length
+    );
+
+    childImages.forEach(function (file) {
+      if (images.length < maxPhotos) images.push(file);
+    });
+  }
+
+  return images;
 }
 
 function readObjects_(sheet) {
@@ -198,6 +228,11 @@ function isImageFile_(file) {
 
 function makeThumbnailUrl_(imageId) {
   return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(imageId) + '&sz=w1600';
+}
+
+function buildPhotoCaption_(pageTitle, fileName) {
+  const name = String(fileName || '').replace(/\.[^.]+$/, '').trim();
+  return name ? pageTitle + '：' + name : pageTitle;
 }
 
 function sortByOrder_(a, b) {

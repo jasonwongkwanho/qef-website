@@ -36,6 +36,12 @@ assert.ok(config.sections.every((section) => section.title && section.summary), 
 assert.ok(config.googleSheet, "config should document the Google Sheet backend");
 assert.strictEqual(config.googleSheet.spreadsheetId, "1CmPaRF6o9K2Gjx2Ga59yRdao6KPbWrnU8tCKqsnt1m8");
 assert.deepStrictEqual(Array.from(config.googleSheet.tabs), ["QEF_Settings", "QEF_Pages", "QEF_Photos", "QEF_Metrics"]);
+assert.strictEqual(config.googleDrive.photoRootFolderId, "1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB");
+assert.ok(config.photos.some((photo) => photo.imageId), "fallback photos should include real Drive image IDs");
+assert.ok(
+  config.photos.some((photo) => photo.pageId === "light-food-prep" && photo.imageId),
+  "nested course folders should have fallback photos"
+);
 
 assert.match(css, /@media \(max-width: 760px\)/, "mobile breakpoint should exist");
 assert.match(css, /\.photo-mosaic/, "photo mosaic styles should exist");
@@ -44,5 +50,6 @@ assert.match(app, /window\.QefSiteTest/, "app should expose test hooks");
 assert.match(codeGs, /QEF_Pages/);
 assert.match(codeGs, /doGet/);
 assert.match(codeGs, /jsonp/);
+assert.match(codeGs, /collectImagesFromFolder_/, "Apps Script should collect nested Drive folder photos");
 
 console.log("QEF static site structure checks passed.");

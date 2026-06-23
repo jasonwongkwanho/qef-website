@@ -7,3 +7,5 @@
 - Added Apps Script read-only API reference.
 - Added static structure test.
 - Added support for QEF course-module pages backed by Drive subfolders.
+- Added QEF Drive photo root metadata and real image IDs for fallback previews.
+- Updated Apps Script photo collection to include nested child folders.

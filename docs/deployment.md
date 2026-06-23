@@ -7,7 +7,16 @@
 3. Deploy as a Web App.
 4. Execute as the account that can read the Google Sheet and Drive folders.
 5. Allow access according to the intended public website policy.
-6. Test:
+6. Confirm the execution account can read the QEF photo root folder:
+
+```text
+https://drive.google.com/drive/folders/1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB
+```
+
+The API reads image files from `QEF_Pages.相片資料夾ID`, including nested child
+folders, and returns Drive thumbnail URLs.
+
+7. Test:
 
 ```text
 <exec-url>?action=health
