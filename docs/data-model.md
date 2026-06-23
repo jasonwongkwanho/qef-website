@@ -12,17 +12,23 @@
 
 | Column | Purpose |
 | --- | --- |
-| `頁面代號` | Stable ID used in URL, e.g. `learning-space` |
-| `頁面名稱` | Page title |
-| `導航名稱` | Short nav label |
-| `分類` | `首頁`, `安排`, `學習歷程`, `成果`, or `課程範疇` |
-| `排序` | Navigation and card order |
-| `頁面摘要` | Short public summary |
-| `詳細介紹` | Main page body text |
-| `主要圖片ID` | Optional Google Drive image ID |
-| `相片資料夾ID` | Optional Google Drive folder ID |
+| `相關代號` | Stable ID used in URL, e.g. `learning-space` |
+| `相關名稱` | Page, activity, or course-content title |
+| `資料夾ID` | Optional Google Drive folder ID for the gallery |
+| `分類` | `計劃簡介`, `實況咖啡店`, `課程安排`, `電子營運`, `學習歷程`, `社區連繫`, `預期成效`, or `課程內容` |
+| `活動日期` | Optional activity date, displayed on album-style pages |
+| `相關簡介` | Public summary/body text |
+| `封面圖片ID` | Optional Google Drive image ID for the card or hero cover |
 | `公開顯示` | Checkbox; TRUE rows are public |
 | `內部備註` | Internal note, not shown |
+
+Rows whose `分類` is one of the seven main section labels appear in top
+navigation. Rows whose `分類` is `課程內容` appear as album-style course-content
+cards and detail pages.
+
+Columns `J:T` may contain hidden legacy compatibility values while an older Apps
+Script deployment is still active. Day-to-day editing should use only columns
+`A:I`.
 
 Photo folders may point to a course-level folder under the QEF photo root folder
 `1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB`. The Apps Script API reads image files in
@@ -36,19 +42,9 @@ website must update immediately.
 
 ## `QEF_Photos`
 
-| Column | Purpose |
-| --- | --- |
-| `相片代號` | Stable photo row ID |
-| `頁面代號` | Links the photo to `QEF_Pages.頁面代號` |
-| `圖片ID` | Google Drive image file ID |
-| `圖片說明` | Public alt/caption text |
-| `排序` | Order within page |
-| `公開顯示` | Checkbox; TRUE rows are public |
-| `內部備註` | Internal note, not shown |
-
-Use this tab for curated representative photos, especially top-level pages that
-do not have their own course folder. Rows in `QEF_Photos` are returned before
-auto-collected folder photos.
+This tab is a legacy backup only. The website no longer reads it. Add or edit
+cover images in `QEF_Pages.封面圖片ID`, and add gallery photos by placing image
+files inside the row's `QEF_Pages.資料夾ID` Drive folder.
 
 Sheet content is included in the cached `site` payload for about 10 minutes.
 Run `clearQefCache()` after urgent Sheet edits if the public website must refresh

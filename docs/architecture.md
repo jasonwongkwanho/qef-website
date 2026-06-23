@@ -21,7 +21,7 @@ The frontend can also run without an API URL by falling back to sample content i
 - `index.html` holds semantic page regions and static asset references.
 - `config.js` holds public configuration and fallback content.
 - `assets/styles.css` defines the visual system and responsive layout.
-- `assets/app.js` loads API data, normalizes records, renders navigation, pages, metrics, and photo mosaics.
+- `assets/app.js` loads API data, normalizes records, renders navigation, pages, metrics, course-content cards, album-style detail pages, and photo mosaics.
 
 ## Backend
 
@@ -31,6 +31,11 @@ The frontend can also run without an API URL by falling back to sample content i
 - `?action=health`: API status check.
 
 The API supports JSON and JSONP. GitHub Pages should use JSONP for the same deployment style as `shine-photo-gallery`.
+
+`QEF_Pages` is the single public content table. It contains the seven main site
+sections and all `課程內容` rows. `QEF_Photos` is no longer read by the API; cover
+images come from `QEF_Pages.封面圖片ID`, and galleries come from
+`QEF_Pages.資料夾ID`.
 
 The frontend renders sample content immediately while the live Apps Script payload loads. This keeps the public page usable during Apps Script cold starts or long Drive scans; the live payload replaces the sample content when it arrives.
 

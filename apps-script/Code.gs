@@ -3,14 +3,23 @@ const SPREADSHEET_ID = '1hplWteuEJGSkNrn0S2AyzHoDxw_DJK_DW_XRyHL4FQM';
 const TABS = {
   settings: 'QEF_Settings',
   pages: 'QEF_Pages',
-  photos: 'QEF_Photos',
   metrics: 'QEF_Metrics'
 };
 
 const PHOTO_ROOT_FOLDER_ID = '1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB';
+const COURSE_CONTENT_CATEGORY = '課程內容';
+const NAV_CATEGORY_ORDER = [
+  '計劃簡介',
+  '實況咖啡店',
+  '課程安排',
+  '電子營運',
+  '學習歷程',
+  '社區連繫',
+  '預期成效'
+];
 const MAX_FOLDER_PHOTOS_PER_PAGE = 12;
 const MAX_FOLDER_PHOTO_DEPTH = 3;
-const CACHE_VERSION = '2026-06-23-v1';
+const CACHE_VERSION = '2026-06-24-v1';
 const SITE_CACHE_KEY = 'qef-site:' + CACHE_VERSION;
 const SITE_CACHE_TTL_SECONDS = 600;
 const FOLDER_PHOTO_CACHE_TTL_SECONDS = 21600;
@@ -59,7 +68,6 @@ function getSitePayload_() {
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   const settings = readSettings_(ss.getSheetByName(TABS.settings));
   const pages = readPages_(ss.getSheetByName(TABS.pages));
-  const sheetPhotos = readPhotos_(ss.getSheetByName(TABS.photos));
   const metrics = readMetrics_(ss.getSheetByName(TABS.metrics));
   const folderPhotos = collectFolderPhotos_(pages);
 
@@ -67,7 +75,7 @@ function getSitePayload_() {
     ok: true,
     settings,
     pages,
-    photos: sheetPhotos.concat(folderPhotos),
+    photos: folderPhotos,
     metrics
   };
 }
@@ -83,50 +91,57 @@ function readSettings_(sheet) {
 
 function readPages_(sheet) {
   return readObjects_(sheet)
-    .filter(function (row) {
-      return isPublic_(row['公開顯示']);
-    })
-    .map(function (row) {
-      return {
-        id: String(row['頁面代號'] || '').trim(),
-        title: String(row['頁面名稱'] || '').trim(),
-        navTitle: String(row['導航名稱'] || row['頁面名稱'] || '').trim(),
-        category: String(row['分類'] || '').trim(),
-        order: Number(row['排序'] || 999),
-        summary: String(row['頁面摘要'] || '').trim(),
-        body: String(row['詳細介紹'] || '').trim(),
-        imageId: String(row['主要圖片ID'] || '').trim(),
-        folderId: String(row['相片資料夾ID'] || '').trim(),
-        published: true
-      };
-    })
+    .map(mapPageRow_)
     .filter(function (page) {
-      return page.id && page.title;
+      return page.id && page.title && page.published;
     })
     .sort(sortByOrder_);
 }
 
-function readPhotos_(sheet) {
-  return readObjects_(sheet)
-    .filter(function (row) {
-      return isPublic_(row['公開顯示']);
-    })
-    .map(function (row) {
-      const imageId = String(row['圖片ID'] || '').trim();
-      return {
-        id: String(row['相片代號'] || '').trim(),
-        pageId: String(row['頁面代號'] || '').trim(),
-        imageId,
-        thumbnailUrl: imageId ? makeThumbnailUrl_(imageId) : '',
-        caption: String(row['圖片說明'] || '').trim(),
-        order: Number(row['排序'] || 999),
-        published: true
-      };
-    })
-    .filter(function (photo) {
-      return photo.pageId;
-    })
-    .sort(sortByOrder_);
+function mapPageRow_(row, index) {
+  const category = getText_(row['分類']);
+  const description = getText_(row['相關簡介'] || row['詳細介紹'] || row['頁面摘要']);
+  const id = getText_(row['相關代號'] || row['頁面代號']);
+  const title = getText_(row['相關名稱'] || row['頁面名稱']);
+  const order = Number(row['排序'] || '') || index + 1;
+
+  return {
+    id,
+    title,
+    navTitle: getNavTitle_(row, title, category),
+    category,
+    order,
+    date: formatDateForApi_(row['活動日期']),
+    summary: getSummaryFromDescription_(description),
+    body: description,
+    imageId: getText_(row['封面圖片ID'] || row['主要圖片ID']),
+    folderId: getText_(row['資料夾ID'] || row['相片資料夾ID']),
+    published: isPublic_(row['公開顯示'])
+  };
+}
+
+function getNavTitle_(row, title, category) {
+  const explicitNavTitle = getText_(row['導航名稱']);
+  if (explicitNavTitle) return explicitNavTitle;
+  if (NAV_CATEGORY_ORDER.indexOf(category) >= 0) return category;
+  return title;
+}
+
+function getSummaryFromDescription_(description) {
+  return getText_(description)
+    .split(/\r?\n/)
+    .filter(function (line) {
+      return line.trim();
+    })[0] || '';
+}
+
+function formatDateForApi_(value) {
+  if (!value) return '';
+  if (Object.prototype.toString.call(value) === '[object Date]' && !isNaN(value.getTime())) {
+    return Utilities.formatDate(value, Session.getScriptTimeZone(), 'yyyy-MM-dd');
+  }
+
+  return getText_(value);
 }
 
 function readMetrics_(sheet) {
@@ -297,10 +312,14 @@ function readObjects_(sheet) {
 
   return values.slice(1).map(function (row) {
     return headers.reduce(function (acc, header, index) {
-      if (header) acc[header] = row[index];
+      if (header && acc[header] === undefined) acc[header] = row[index];
       return acc;
     }, {});
   });
+}
+
+function getText_(value) {
+  return String(value == null ? '' : value).trim();
 }
 
 function output_(payload, callback) {

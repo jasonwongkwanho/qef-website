@@ -13,8 +13,9 @@
 https://drive.google.com/drive/folders/1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB
 ```
 
-The API reads image files from `QEF_Pages.相片資料夾ID`, including nested child
-folders, and returns Drive thumbnail URLs.
+The API reads image files from `QEF_Pages.資料夾ID`, including nested child
+folders, and returns Drive thumbnail URLs. `QEF_Photos` is no longer part of the
+public API contract.
 
 The Apps Script caches the full `site` payload for about 10 minutes and folder
 photo metadata for up to 6 hours. After deploying `Code.gs` or changing Drive

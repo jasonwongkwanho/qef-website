@@ -35,7 +35,7 @@ assert.ok(config.sections.some((section) => section.id === "home"), "home sectio
 assert.ok(config.sections.every((section) => section.title && section.summary), "each section needs title and summary");
 assert.ok(config.googleSheet, "config should document the Google Sheet backend");
 assert.strictEqual(config.googleSheet.spreadsheetId, "1hplWteuEJGSkNrn0S2AyzHoDxw_DJK_DW_XRyHL4FQM");
-assert.deepStrictEqual(Array.from(config.googleSheet.tabs), ["QEF_Settings", "QEF_Pages", "QEF_Photos", "QEF_Metrics"]);
+assert.deepStrictEqual(Array.from(config.googleSheet.tabs), ["QEF_Settings", "QEF_Pages", "QEF_Metrics"]);
 assert.strictEqual(config.googleDrive.photoRootFolderId, "1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB");
 assert.ok(config.apiTimeoutMs >= 90000, "live Apps Script API timeout should allow slow cold starts");
 assert.ok(config.photos.some((photo) => photo.imageId), "fallback photos should include real Drive image IDs");
@@ -52,7 +52,18 @@ assert.match(app, /DEFAULT_JSONP_TIMEOUT_MS/, "frontend should use a named JSONP
 assert.doesNotMatch(app, /}, 20000\)/, "frontend should not hard-code a 20 second API timeout");
 assert.match(app, /buildSampleSiteData/, "frontend should be able to render sample data before live API returns");
 assert.match(app, /showWarning/, "frontend should keep fallback content visible on slow API failures");
+assert.match(app, /COURSE_CONTENT_CATEGORY = "課程內容"/, "frontend should use the new course content category");
+assert.match(app, /renderCourseContentCard/, "course content should use the album-style card renderer");
+assert.match(app, /renderCourseContentDetail/, "course content should use the album-style detail renderer");
+assert.doesNotMatch(app, /其他部分/, "old related section label should not remain");
+assert.doesNotMatch(app, /課程範疇/, "old course category label should not remain");
 assert.match(codeGs, /QEF_Pages/);
+assert.doesNotMatch(codeGs, /QEF_Photos/, "Apps Script should no longer read QEF_Photos");
+assert.match(codeGs, /相關代號/, "Apps Script should read the new QEF_Pages schema");
+assert.match(codeGs, /相關名稱/, "Apps Script should read the new QEF_Pages schema");
+assert.match(codeGs, /資料夾ID/, "Apps Script should read the new QEF_Pages schema");
+assert.match(codeGs, /封面圖片ID/, "Apps Script should read the new QEF_Pages schema");
+assert.match(codeGs, /acc\[header\] === undefined/, "Apps Script should keep the first value when hidden legacy headers are present");
 assert.match(codeGs, /doGet/);
 assert.match(codeGs, /jsonp/);
 assert.match(codeGs, /collectImagesFromFolder_/, "Apps Script should collect nested Drive folder photos");

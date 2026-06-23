@@ -4,6 +4,7 @@
   const CONFIG = window.QEF_SITE_CONFIG || {};
   const PLACEHOLDER_API = "";
   const DEFAULT_JSONP_TIMEOUT_MS = 90000;
+  const COURSE_CONTENT_CATEGORY = "課程內容";
 
   const state = {
     settings: {},
@@ -161,15 +162,16 @@
     return items
       .map(function (item) {
         return {
-          id: normalizeSectionId(item.id || item.pageId || item["頁面代號"]),
-          title: String(item.title || item.name || item["頁面名稱"] || "").trim(),
-          navTitle: String(item.navTitle || item["導航名稱"] || item.title || "").trim(),
-          category: String(item.category || item["分類"] || "").trim(),
+          id: normalizeSectionId(item.id || item.pageId || item.relatedId || item["相關代號"] || item["頁面代號"]),
+          title: String(item.title || item.name || item.relatedName || item["相關名稱"] || item["頁面名稱"] || "").trim(),
+          navTitle: String(item.navTitle || item["導航名稱"] || item["分類"] || item.title || "").trim(),
+          category: normalizeCategory(item.category || item["分類"]),
           order: Number(item.order || item["排序"] || 999),
-          summary: String(item.summary || item["頁面摘要"] || "").trim(),
-          body: String(item.body || item.description || item["詳細介紹"] || "").trim(),
-          imageId: String(item.imageId || item["主要圖片ID"] || "").trim(),
-          folderId: String(item.folderId || item["相片資料夾ID"] || "").trim(),
+          date: String(item.date || item.activityDate || item["活動日期"] || "").trim(),
+          summary: String(item.summary || item["頁面摘要"] || item.description || item["相關簡介"] || "").trim().split(/\r?\n/)[0],
+          body: String(item.body || item.description || item["相關簡介"] || item["詳細介紹"] || item.summary || "").trim(),
+          imageId: String(item.imageId || item.coverImageId || item["封面圖片ID"] || item["主要圖片ID"] || "").trim(),
+          folderId: String(item.folderId || item.driveFolderId || item["資料夾ID"] || item["相片資料夾ID"] || "").trim(),
           published: parseBoolean(item.published !== undefined ? item.published : item["公開顯示"])
         };
       })
@@ -293,15 +295,20 @@
 
     hideStatus();
     els.pageView.hidden = false;
+    if (section.category === COURSE_CONTENT_CATEGORY) {
+      els.pageView.innerHTML = renderCourseContentDetail(section);
+      return;
+    }
+
     els.pageView.innerHTML = section.id === "home" ? renderHome(section) : renderDetail(section);
   }
 
   function renderHome(section) {
     const highlights = state.sections.filter(function (item) {
-      return item.id !== "home" && item.category !== "課程範疇";
+      return item.id !== "home" && item.category !== COURSE_CONTENT_CATEGORY;
     });
     const modules = state.sections.filter(function (item) {
-      return item.category === "課程範疇";
+      return item.category === COURSE_CONTENT_CATEGORY;
     });
 
     return `
@@ -326,13 +333,13 @@
       </section>
 
       ${modules.length ? `
-        <section class="content-section" aria-labelledby="moduleTitle">
+        <section class="content-section course-content-section" id="course-content" aria-labelledby="moduleTitle">
           <div class="section-heading">
-            <p class="section-kicker">Learning Modules</p>
-            <h2 id="moduleTitle">課程範疇相片</h2>
+            <p class="section-kicker">Course Content</p>
+            <h2 id="moduleTitle">課程內容</h2>
           </div>
-          <div class="feature-grid module-grid">
-            ${modules.map(renderFeatureCard).join("")}
+          <div class="course-content-grid">
+            ${modules.map(renderCourseContentCard).join("")}
           </div>
         </section>
       ` : ""}
@@ -341,7 +348,7 @@
 
   function renderDetail(section) {
     const siblingSections = state.sections.filter(function (item) {
-      return item.id !== section.id && item.id !== "home";
+      return item.category === COURSE_CONTENT_CATEGORY;
     }).slice(0, 3);
 
     return `
@@ -358,10 +365,67 @@
       <section class="content-section" aria-labelledby="relatedTitle">
         <div class="section-heading">
           <p class="section-kicker">More</p>
-          <h2 id="relatedTitle">其他部分</h2>
+          <h2 id="relatedTitle">課程內容</h2>
         </div>
-        <div class="feature-grid compact">
-          ${siblingSections.map(renderFeatureCard).join("")}
+        <div class="course-content-grid compact">
+          ${siblingSections.map(renderCourseContentCard).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  function renderCourseContentCard(section) {
+    const coverUrl = getSectionCoverUrl(section);
+    const photos = getPhotosForSection(section.id);
+    const photoCount = photos.length;
+
+    return `
+      <article class="course-card">
+        <div class="course-card-copy">
+          <span class="course-pill">${escapeHtml(section.category || COURSE_CONTENT_CATEGORY)}</span>
+          <h3>${escapeHtml(section.title)}</h3>
+          <p>${escapeHtml(section.summary || section.body)}</p>
+          <div class="course-meta">
+            ${section.date ? `<span>${escapeHtml(section.date)}</span>` : ""}
+            <span>${photoCount ? escapeHtml(String(photoCount) + " 張相片") : "相片稍後加入"}</span>
+          </div>
+          <a class="course-button" href="${escapeAttr(makeSectionHref(section.id))}" data-section-id="${escapeAttr(section.id)}">查看相簿</a>
+        </div>
+        <div class="course-card-media">
+          ${coverUrl ? `<img src="${escapeAttr(coverUrl)}" alt="${escapeAttr(section.title)}" loading="lazy" />` : `<div class="course-card-placeholder">${escapeHtml(section.navTitle || section.title)}</div>`}
+        </div>
+      </article>
+    `;
+  }
+
+  function renderCourseContentDetail(section) {
+    const photos = getPhotosForSection(section.id);
+    const coverUrl = getSectionCoverUrl(section);
+    const countLabel = photos.length ? String(photos.length) + " 張相片" : "相片稍後加入";
+
+    return `
+      <a class="back-link" href="./#course-content">返回課程內容</a>
+
+      <article class="course-detail-hero">
+        ${coverUrl ? `<img src="${escapeAttr(coverUrl)}" alt="${escapeAttr(section.title)}" />` : ""}
+        <div class="course-detail-overlay">
+          <span class="course-pill">${escapeHtml(section.category || COURSE_CONTENT_CATEGORY)}</span>
+          <h2>${escapeHtml(section.title)}</h2>
+          <p>${escapeHtml(section.body || section.summary)}</p>
+          <div class="course-detail-meta">
+            ${section.date ? `<span>${escapeHtml(section.date)}</span>` : ""}
+            <span>${escapeHtml(countLabel)}</span>
+          </div>
+        </div>
+      </article>
+
+      <section class="course-gallery-section" aria-labelledby="courseGalleryTitle">
+        <div class="section-heading">
+          <p class="section-kicker">Gallery</p>
+          <h2 id="courseGalleryTitle">相片記錄</h2>
+        </div>
+        <div class="course-gallery">
+          ${(photos.length ? photos : [{ caption: section.title, imageId: section.imageId }]).map(renderGalleryPhoto).join("")}
         </div>
       </section>
     `;
@@ -413,16 +477,69 @@
     `;
   }
 
+  function renderGalleryPhoto(photo, index) {
+    const imageUrl = photo.src || driveThumbnailUrl(photo.imageId);
+    const caption = photo.caption || "QEF 計劃相片";
+
+    if (!imageUrl) {
+      return `
+        <figure class="gallery-photo placeholder-tile tone-${(index % 4) + 1}">
+          <figcaption>${escapeHtml(caption)}</figcaption>
+        </figure>
+      `;
+    }
+
+    return `
+      <figure class="gallery-photo">
+        <img src="${escapeAttr(imageUrl)}" alt="${escapeAttr(caption)}" loading="lazy" />
+        <figcaption>${escapeHtml(caption)}</figcaption>
+      </figure>
+    `;
+  }
+
   function getPhotosForSection(sectionId) {
-    return state.photos.filter(function (photo) {
+    const section = findSection(sectionId);
+    const photos = state.photos.filter(function (photo) {
       return photo.pageId === sectionId;
+    });
+
+    if (section && section.imageId) {
+      photos.unshift({
+        id: section.id + "-cover",
+        pageId: section.id,
+        imageId: section.imageId,
+        caption: section.title,
+        order: 0,
+        published: true
+      });
+    }
+
+    return dedupePhotos(photos);
+  }
+
+  function dedupePhotos(photos) {
+    const seen = new Set();
+
+    return photos.filter(function (photo) {
+      const key = photo.imageId || photo.src || photo.id;
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
     });
   }
 
   function getNavSections() {
     return state.sections.filter(function (section) {
-      return section.category !== "課程範疇";
+      return section.category !== COURSE_CONTENT_CATEGORY;
     });
+  }
+
+  function getSectionCoverUrl(section) {
+    const coverFromSection = driveThumbnailUrl(section.imageId);
+    if (coverFromSection) return coverFromSection;
+
+    const firstPhoto = getPhotosForSection(section.id)[0];
+    return firstPhoto ? firstPhoto.src || driveThumbnailUrl(firstPhoto.imageId) : "";
   }
 
   function driveThumbnailUrl(imageId) {
@@ -437,6 +554,11 @@
 
   function normalizeSectionId(value) {
     return String(value || "").trim().toLowerCase();
+  }
+
+  function normalizeCategory(value) {
+    const text = String(value || "").trim();
+    return text === "\u8ab2\u7a0b\u7bc4\u7587" ? COURSE_CONTENT_CATEGORY : text;
   }
 
   function findSection(sectionId) {

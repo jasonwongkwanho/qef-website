@@ -18,7 +18,7 @@ GitHub Pages
         ↓ JSONP
 Google Apps Script Web App
         ↓
-Google Sheet：QEF_Settings / QEF_Pages / QEF_Photos / QEF_Metrics
+Google Sheet：QEF_Settings / QEF_Pages / QEF_Metrics
         ↓
 Google Drive：相片圖片 ID 或相片資料夾 ID
 ```
@@ -46,8 +46,11 @@ QEF 專用工作頁：
 
 - `QEF_Settings`
 - `QEF_Pages`
-- `QEF_Photos`
 - `QEF_Metrics`
+
+`QEF_Pages` 為單一公開內容表，欄位為 `相關代號`、`相關名稱`、`資料夾ID`、`分類`、`活動日期`、`相關簡介`、`封面圖片ID`、`公開顯示`、`內部備註`。`QEF_Photos` 已停用，只作舊資料備份。
+
+如 `QEF_Pages` 的 J:T 出現隱藏欄，屬舊 Apps Script 部署過渡兼容欄；日常編輯只使用 A:I。
 
 原有 `Albums` 工作頁屬相簿專案資料，不應因 QEF 網站修改。
 
@@ -58,9 +61,9 @@ QEF 專用工作頁：
 3. 未設定 Apps Script URL 時，可使用 `config.js` 示例資料預覽。
 4. 設定 Apps Script URL 後，可讀取 Google Sheet 後台資料。
 5. `QEF_Pages` 只有 `公開顯示 = TRUE` 的頁面會顯示。
-6. `QEF_Photos` 只有 `公開顯示 = TRUE` 的相片會顯示。
-7. `分類 = 課程範疇` 的分頁不放在頂部導航，應在首頁內容卡片顯示。
-8. 相片 ID 留空時，前台顯示設計預留圖格，不應出現壞圖示。
+6. `QEF_Pages` 的 `分類 = 課程內容` 不放在頂部導航，應在首頁課程內容卡片顯示。
+7. `封面圖片ID` 留空時，前台可使用資料夾第一張相片或設計預留圖格，不應出現壞圖示。
+8. `QEF_Photos` 已停用，修改相片時不應再依賴此分頁。
 9. 手機版正常。
 10. Apps Script `?action=health` 可回傳 `ok: true`。
 11. `node tests/site-structure.test.js` 通過。

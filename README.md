@@ -11,7 +11,7 @@ GitHub Pages
 Google Apps Script Web App
         ↓
 Google Sheet：尚計劃活動相簿資料庫
-  QEF_Settings / QEF_Pages / QEF_Photos / QEF_Metrics
+  QEF_Settings / QEF_Pages / QEF_Metrics
         ↓
 Google Drive 圖片 ID 或相片資料夾 ID
 ```
@@ -39,8 +39,9 @@ Spreadsheet ID：
 
 - `QEF_Settings`
 - `QEF_Pages`
-- `QEF_Photos`
 - `QEF_Metrics`
+
+`QEF_Pages` 現已合併頁面、課程內容及封面相片設定。`QEF_Photos` 已停用，只保留作舊資料備份，網站不再讀取。
 
 `Albums` 是原有相簿資料，不應因 QEF 網站而修改。
 
