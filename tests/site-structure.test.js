@@ -56,6 +56,12 @@ assert.match(app, /COURSE_CONTENT_CATEGORY = "課程內容"/, "frontend should u
 assert.match(app, /renderCourseContentCard/, "course content should use the album-style card renderer");
 assert.match(app, /renderCourseContentDetail/, "course content should use the album-style detail renderer");
 assert.match(app, /function renderSectionControl/, "main sections should render as cue-card controls");
+assert.match(app, /function renderSectionCarousel/, "content section tabs should render as a card carousel");
+assert.match(app, /function renderSectionCard/, "main sections should have explanatory cards");
+assert.match(app, /section-card-track/, "section carousel should include a horizontal card track");
+assert.match(app, /data-carousel-direction/, "section carousel should include left and right controls");
+assert.match(app, /scrollBy/, "section carousel controls should scroll the card track");
+assert.match(app, /section\.summary/, "section cards should include each section summary as explanation");
 assert.match(app, /<button class="nav-link/, "main section controls should be buttons, not plain links");
 assert.match(app, /type="button"/, "cue-card controls should not submit or navigate by default");
 assert.match(app, /aria-pressed="/, "cue-card controls should expose their selected state");
