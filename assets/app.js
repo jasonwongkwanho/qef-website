@@ -248,17 +248,11 @@
     const controls = sections.map(renderSectionControl);
 
     if (els.siteNav) els.siteNav.innerHTML = controls.join("");
-    if (els.sectionTabs) els.sectionTabs.innerHTML = renderSectionCarousel(sections);
+    if (els.sectionTabs) els.sectionTabs.innerHTML = controls.join("");
 
-    document.querySelectorAll(".site-nav [data-section-id], .section-tabs .section-card[data-section-id]").forEach(function (control) {
+    document.querySelectorAll(".site-nav [data-section-id], .section-tabs [data-section-id]").forEach(function (control) {
       control.addEventListener("click", handleSectionClick);
     });
-
-    document.querySelectorAll("[data-carousel-direction]").forEach(function (control) {
-      control.addEventListener("click", handleCarouselScroll);
-    });
-
-    alignActiveSectionCard();
   }
 
   function renderSectionControl(section) {
@@ -268,37 +262,6 @@
     const label = section.navTitle || section.title;
 
     return `<button class="nav-link cue-card-nav${activeClass}" type="button" data-section-id="${escapeAttr(section.id)}" aria-pressed="${pressed}">${escapeHtml(label)}</button>`;
-  }
-
-  function renderSectionCarousel(sections) {
-    const cards = sections.map(renderSectionCard).join("");
-
-    return `
-      <div class="section-card-carousel" aria-label="QEF 主要分頁插卡">
-        <button class="section-card-arrow" type="button" data-carousel-direction="prev" aria-label="向左瀏覽分頁">‹</button>
-        <div class="section-card-track" tabindex="0">
-          ${cards}
-        </div>
-        <button class="section-card-arrow" type="button" data-carousel-direction="next" aria-label="向右瀏覽分頁">›</button>
-      </div>
-    `;
-  }
-
-  function renderSectionCard(section, index) {
-    const isActive = section.id === state.activeSectionId;
-    const activeClass = isActive ? " is-active" : "";
-    const pressed = isActive ? "true" : "false";
-    const label = section.navTitle || section.title;
-    const summary = section.summary || section.body || "";
-
-    return `
-      <button class="section-card${activeClass}" type="button" data-section-id="${escapeAttr(section.id)}" aria-pressed="${pressed}">
-        <span class="section-card-index">${escapeHtml(String(index + 1).padStart(2, "0"))}</span>
-        <strong>${escapeHtml(label)}</strong>
-        <span>${escapeHtml(section.title)}</span>
-        <p>${escapeHtml(summary)}</p>
-      </button>
-    `;
   }
 
   function handleSectionClick(event) {
@@ -312,31 +275,6 @@
     state.activeSectionId = nextId;
     renderNav();
     renderPage();
-  }
-
-  function handleCarouselScroll(event) {
-    const control = event.target.closest("[data-carousel-direction]");
-    if (!control) return;
-
-    const carousel = control.closest(".section-card-carousel");
-    const track = carousel && carousel.querySelector(".section-card-track");
-    if (!track) return;
-
-    const firstCard = track.querySelector(".section-card");
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 280;
-    const direction = control.dataset.carouselDirection === "prev" ? -1 : 1;
-    track.scrollBy({ left: direction * (cardWidth + 14), behavior: "smooth" });
-  }
-
-  function alignActiveSectionCard() {
-    if (!els.sectionTabs) return;
-
-    const track = els.sectionTabs.querySelector(".section-card-track");
-    const activeCard = els.sectionTabs.querySelector(".section-card.is-active");
-    if (track && activeCard && typeof track.scrollTo === "function") {
-      const targetLeft = activeCard.offsetLeft - ((track.clientWidth - activeCard.clientWidth) / 2);
-      track.scrollTo({ left: Math.max(0, targetLeft), behavior: "auto" });
-    }
   }
 
   function renderMetrics() {
@@ -368,6 +306,8 @@
     }
 
     els.pageView.innerHTML = section.id === "home" ? renderHome(section) : renderDetail(section);
+    bindMainContentCarousel();
+    alignActiveMainContentCard();
   }
 
   function renderHome(section) {
@@ -379,15 +319,7 @@
     });
 
     return `
-      <article class="intro-layout">
-        <div class="intro-copy">
-          <p class="section-kicker">${escapeHtml(section.category || "QEF Project")}</p>
-          <h2>${escapeHtml(section.title)}</h2>
-          <p class="lead">${escapeHtml(section.summary)}</p>
-          <p>${escapeHtml(section.body)}</p>
-        </div>
-        ${renderPhotoMosaic(section)}
-      </article>
+      ${renderMainContentCarousel()}
 
       <section class="content-section" aria-labelledby="arrangementTitle">
         <div class="section-heading">
@@ -419,15 +351,7 @@
     }).slice(0, 3);
 
     return `
-      <article class="detail-layout">
-        <div class="detail-main">
-          <p class="section-kicker">${escapeHtml(section.category || "QEF Project")}</p>
-          <h2>${escapeHtml(section.title)}</h2>
-          <p class="lead">${escapeHtml(section.summary)}</p>
-          <p>${escapeHtml(section.body)}</p>
-        </div>
-        ${renderPhotoMosaic(section)}
-      </article>
+      ${renderMainContentCarousel()}
 
       <section class="content-section" aria-labelledby="relatedTitle">
         <div class="section-heading">
@@ -439,6 +363,81 @@
         </div>
       </section>
     `;
+  }
+
+  function renderMainContentCarousel() {
+    const sections = getNavSections();
+    const cards = sections.map(renderMainContentCard).join("");
+
+    return `
+      <section class="main-content-carousel" aria-label="QEF 分頁重點展示">
+        <button class="main-content-arrow" type="button" data-main-carousel-direction="prev" aria-label="上一個分頁">‹</button>
+        <div class="main-content-card-track">
+          ${cards}
+        </div>
+        <button class="main-content-arrow" type="button" data-main-carousel-direction="next" aria-label="下一個分頁">›</button>
+      </section>
+    `;
+  }
+
+  function renderMainContentCard(section) {
+    const isActive = section.id === state.activeSectionId;
+    const activeClass = isActive ? " is-active" : "";
+    const pressed = isActive ? "true" : "false";
+    const coverUrl = getSectionCoverUrl(section);
+    const backgroundStyle = coverUrl ? ` style="--card-bg: url(&quot;${escapeAttr(coverUrl)}&quot;);"` : "";
+
+    return `
+      <button class="main-content-card${activeClass}" type="button" data-section-id="${escapeAttr(section.id)}" aria-pressed="${pressed}"${backgroundStyle}>
+        <span class="main-content-scrim"></span>
+        <span class="main-content-copy">
+          <span class="section-kicker">${escapeHtml(section.category || "QEF Project")}</span>
+          <strong>${escapeHtml(section.title)}</strong>
+          <span class="lead">${escapeHtml(section.summary)}</span>
+          <span>${escapeHtml(section.body)}</span>
+        </span>
+      </button>
+    `;
+  }
+
+  function bindMainContentCarousel() {
+    if (!els.pageView) return;
+
+    els.pageView.querySelectorAll(".main-content-card[data-section-id]").forEach(function (control) {
+      control.addEventListener("click", handleSectionClick);
+    });
+
+    els.pageView.querySelectorAll("[data-main-carousel-direction]").forEach(function (control) {
+      control.addEventListener("click", handleMainContentSlide);
+    });
+  }
+
+  function handleMainContentSlide(event) {
+    const control = event.target.closest("[data-main-carousel-direction]");
+    if (!control) return;
+
+    const sections = getNavSections();
+    if (!sections.length) return;
+
+    const currentIndex = Math.max(0, sections.findIndex(function (section) {
+      return section.id === state.activeSectionId;
+    }));
+    const direction = control.dataset.mainCarouselDirection === "prev" ? -1 : 1;
+    const nextIndex = (currentIndex + direction + sections.length) % sections.length;
+
+    state.activeSectionId = sections[nextIndex].id;
+    renderNav();
+    renderPage();
+  }
+
+  function alignActiveMainContentCard() {
+    if (!els.pageView) return;
+
+    const track = els.pageView.querySelector(".main-content-card-track");
+    const activeCard = els.pageView.querySelector(".main-content-card.is-active");
+    if (track && activeCard && typeof track.scrollTo === "function") {
+      track.scrollTo({ left: activeCard.offsetLeft, behavior: "auto" });
+    }
   }
 
   function renderCourseContentCard(section) {

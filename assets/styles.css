@@ -319,111 +319,10 @@ img {
 
 .section-tabs {
   margin-bottom: 26px;
-  display: block;
-}
-
-.section-card-carousel {
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr) 42px;
-  align-items: stretch;
-  gap: 10px;
-}
-
-.section-card-track {
   display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  padding: 4px 2px 12px;
-  scroll-padding-inline: 2px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-}
-
-.section-card {
-  appearance: none;
-  flex: 0 0 min(315px, 78vw);
-  min-height: 158px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
-  padding: 20px;
-  border: 1px solid rgba(197, 211, 225, 0.92);
-  border-radius: var(--radius);
-  background: #fff;
-  color: var(--ink);
-  font-family: inherit;
-  text-align: left;
-  cursor: pointer;
-  scroll-snap-align: start;
-  box-shadow: 0 12px 28px rgba(21, 33, 47, 0.06);
-  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
-}
-
-.section-card:hover,
-.section-card.is-active {
-  border-color: rgba(15, 118, 110, 0.28);
-  background: #f2fbf9;
-  box-shadow: 0 16px 34px rgba(21, 33, 47, 0.10);
-  transform: translateY(-1px);
-}
-
-.section-card:focus-visible,
-.section-card-arrow:focus-visible {
-  outline: 3px solid rgba(15, 118, 110, 0.22);
-  outline-offset: 3px;
-}
-
-.section-card-index {
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0;
-}
-
-.section-card strong {
-  color: var(--teal-dark);
-  font-size: 21px;
-  line-height: 1.2;
-}
-
-.section-card span:not(.section-card-index) {
-  color: var(--ink-soft);
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.section-card p {
-  display: -webkit-box;
-  overflow: hidden;
-  margin: 2px 0 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.section-card-arrow {
-  appearance: none;
-  min-height: 128px;
-  border: 1px solid rgba(197, 211, 225, 0.92);
-  border-radius: var(--radius);
-  background: #fff;
-  color: var(--teal-dark);
-  font-family: inherit;
-  font-size: 28px;
-  font-weight: 900;
-  cursor: pointer;
-  box-shadow: 0 12px 28px rgba(21, 33, 47, 0.05);
-  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
-}
-
-.section-card-arrow:hover {
-  border-color: rgba(15, 118, 110, 0.28);
-  background: #eaf6f4;
-  transform: translateY(-1px);
 }
 
 .status {
@@ -460,6 +359,133 @@ img {
   border-color: rgba(200, 148, 47, 0.34);
   color: #765112;
   background: #fffaf0;
+}
+
+.main-content-carousel {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.main-content-card-track {
+  display: flex;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.main-content-card-track::-webkit-scrollbar {
+  display: none;
+}
+
+.main-content-card {
+  --card-bg: linear-gradient(135deg, #184e77, #0f766e);
+  appearance: none;
+  position: relative;
+  flex: 0 0 100%;
+  min-height: 340px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background-color: var(--teal-dark);
+  background-image: linear-gradient(90deg, rgba(21, 33, 47, 0.82), rgba(21, 33, 47, 0.46)), var(--card-bg);
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+  box-shadow: var(--shadow);
+}
+
+.main-content-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.main-content-card.is-active {
+  box-shadow: 0 20px 46px rgba(21, 33, 47, 0.16);
+}
+
+.main-content-card:focus-visible,
+.main-content-arrow:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.26);
+  outline-offset: 3px;
+}
+
+.main-content-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.18), transparent 32%);
+}
+
+.main-content-copy {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 42px;
+}
+
+.main-content-copy .section-kicker {
+  display: block;
+  margin: 0 0 12px;
+  color: #ffd27a;
+}
+
+.main-content-copy strong {
+  display: block;
+  color: #fff;
+  font-size: 38px;
+  line-height: 1.16;
+}
+
+.main-content-copy .lead {
+  display: block;
+  margin: 22px 0 0;
+  color: #dffaf5;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.55;
+}
+
+.main-content-copy span:not(.section-kicker):not(.lead) {
+  display: block;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.90);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.main-content-arrow {
+  appearance: none;
+  min-height: 340px;
+  border: 1px solid rgba(197, 211, 225, 0.92);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--teal-dark);
+  font-family: inherit;
+  font-size: 32px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(21, 33, 47, 0.05);
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.main-content-arrow:hover {
+  border-color: rgba(15, 118, 110, 0.28);
+  background: #eaf6f4;
+  transform: translateY(-1px);
 }
 
 .intro-layout,
@@ -919,23 +945,34 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .section-card-carousel {
+  .main-content-carousel {
     grid-template-columns: 36px minmax(0, 1fr) 36px;
     gap: 8px;
   }
 
-  .section-card {
-    flex-basis: min(276px, 76vw);
-    min-height: 150px;
-    padding: 18px;
+  .main-content-card,
+  .main-content-copy,
+  .main-content-arrow {
+    min-height: 360px;
   }
 
-  .section-card strong {
-    font-size: 19px;
+  .main-content-copy {
+    padding: 26px;
   }
 
-  .section-card-arrow {
-    min-height: 118px;
+  .main-content-copy strong {
+    font-size: 30px;
+  }
+
+  .main-content-copy .lead {
+    font-size: 17px;
+  }
+
+  .main-content-copy span:not(.section-kicker):not(.lead) {
+    font-size: 15px;
+  }
+
+  .main-content-arrow {
     font-size: 24px;
   }
 
