@@ -7,7 +7,7 @@ window.QEF_SITE_CONFIG = {
   footerText: "QEF 計劃公開介紹網站",
 
   // Apps Script 部署後，將 /exec URL 貼在這裡。
-  apiBaseUrl: "https://script.google.com/macros/s/AKfycbyHiQHsyrm-zoI8qfRU_gc9CCVB-0PT-KFfYxaLzwRWoaDv-N4r7xGHvEunjEA2gl_m/exec",
+  apiBaseUrl: "https://script.google.com/macros/s/AKfycbyUHXRA6cHe3j2qaPsjl5sz3W0lUyoemJST2eXeRK83Aj2wUaMS8nWH2UJwQTWmAvNh/exec",
   apiMode: "jsonp",
   apiTimeoutMs: 90000,
   useSampleDataWhenApiMissing: true,

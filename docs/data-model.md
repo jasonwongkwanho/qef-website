@@ -33,7 +33,9 @@ Script deployment is still active. Day-to-day editing should use only columns
 Photo folders may point to a course-level folder under the QEF photo root folder
 `1wibEm9nltRtrFjoLIN0yuKWYUwVF5MuB`. The Apps Script API reads image files in
 that folder and nested child folders, then returns public thumbnail URLs for the
-frontend.
+frontend. If `封面圖片ID` is filled, the frontend uses that image as the card,
+detail hero, and first gallery image before falling back to the first folder
+photo.
 
 Folder photo scans are cached per page/folder for up to 6 hours to avoid slow
 Drive traversal on every public page load. After changing Drive folder contents,
@@ -47,8 +49,8 @@ cover images in `QEF_Pages.封面圖片ID`, and add gallery photos by placing im
 files inside the row's `QEF_Pages.資料夾ID` Drive folder.
 
 Sheet content is included in the cached `site` payload for about 10 minutes.
-Run `clearQefCache()` after urgent Sheet edits if the public website must refresh
-before normal cache expiry.
+Run `clearQefCache()` and then `warmQefSiteCache()` after urgent Sheet edits if
+the public website must refresh before normal cache expiry.
 
 ## `QEF_Metrics`
 

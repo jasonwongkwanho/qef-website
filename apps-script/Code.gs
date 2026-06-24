@@ -19,7 +19,8 @@ const NAV_CATEGORY_ORDER = [
 ];
 const MAX_FOLDER_PHOTOS_PER_PAGE = 12;
 const MAX_FOLDER_PHOTO_DEPTH = 3;
-const CACHE_VERSION = '2026-06-24-v1';
+const DEFAULT_THUMBNAIL_SIZE = 800;
+const CACHE_VERSION = '2026-06-25-v1';
 const SITE_CACHE_KEY = 'qef-site:' + CACHE_VERSION;
 const SITE_CACHE_TTL_SECONDS = 600;
 const FOLDER_PHOTO_CACHE_TTL_SECONDS = 21600;
@@ -349,8 +350,10 @@ function isImageFile_(file) {
   return mime.indexOf('image/') === 0;
 }
 
-function makeThumbnailUrl_(imageId) {
-  return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(imageId) + '&sz=w1600';
+function makeThumbnailUrl_(imageId, size) {
+  const requestedSize = Number(size || DEFAULT_THUMBNAIL_SIZE);
+  const safeSize = isFinite(requestedSize) && requestedSize > 0 ? Math.round(requestedSize) : DEFAULT_THUMBNAIL_SIZE;
+  return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(imageId) + '&sz=w' + safeSize;
 }
 
 function buildPhotoCaption_(pageTitle, fileName) {

@@ -25,6 +25,7 @@ Google Drive 圖片 ID 或相片資料夾 ID
 | `assets/styles.css` | 前台視覺及 responsive 樣式 |
 | `assets/app.js` | API 載入、分頁切換、內容及相片渲染；API 載入較慢時先顯示示例內容 |
 | `apps-script/Code.gs` | Apps Script read-only API 參考碼；包含整站及相片資料夾快取 |
+| `scripts/probe-live-site.js` | 部署後檢查 Apps Script 版本、快取狀態、封面圖片ID 及 live payload 速度 |
 | `tests/site-structure.test.js` | 靜態結構檢查 |
 
 ## Google Sheet 後台
@@ -49,10 +50,11 @@ Spreadsheet ID：
 
 1. 將 `apps-script/Code.gs` 貼到 Google Apps Script 專案。
 2. 部署為 Web App，權限使用可讀取該 Google Sheet 的執行身份。
-3. 在 Apps Script 編輯器執行 `warmQefSiteCache()`，先建立整站快取。
+3. 在 Apps Script 編輯器先執行 `clearQefCache()`，再執行 `warmQefSiteCache()`，先建立整站快取。
 4. 取得 `/exec` URL。
 5. 將 URL 填入 `config.js` 的 `apiBaseUrl`。
 6. 將網站推到 GitHub Pages。
+7. 部署後執行 `node scripts/probe-live-site.js`；`health` 應有 `cacheVersion`，不應再出現 `QEF_Photos`，而已填 `QEF_Pages!G 封面圖片ID` 的課程 row 應回傳 `imageId`。
 
 如未設定 `apiBaseUrl`，前台會使用 `config.js` 內的示例資料，方便先預覽設計。
 

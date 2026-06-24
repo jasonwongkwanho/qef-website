@@ -19,10 +19,10 @@ public API contract.
 
 The Apps Script caches the full `site` payload for about 10 minutes and folder
 photo metadata for up to 6 hours. After deploying `Code.gs` or changing Drive
-folder contents, run `warmQefSiteCache()` in the Apps Script editor. Use
-`clearQefCache()` first if you need to force a fully fresh rebuild.
+folder contents, run `clearQefCache()` and then `warmQefSiteCache()` in the Apps
+Script editor.
 
-7. Run `warmQefSiteCache()` in the Apps Script editor.
+7. Run `clearQefCache()` and then `warmQefSiteCache()` in the Apps Script editor.
 8. Test:
 
 ```text
@@ -32,8 +32,11 @@ folder contents, run `warmQefSiteCache()` in the Apps Script editor. Use
 Expected response includes:
 
 ```json
-{ "ok": true }
+{ "ok": true, "cacheVersion": "2026-06-25-v1" }
 ```
+
+The response should not include `QEF_Photos`. If it still does, the deployed
+Web App is using an older `Code.gs` version.
 
 ## Frontend
 
@@ -41,6 +44,28 @@ Expected response includes:
 2. Keep `apiMode: "jsonp"` unless the Apps Script deployment is confirmed to support direct JSON fetch from GitHub Pages.
 3. Keep `apiTimeoutMs` high enough for Apps Script cold starts and Drive scans; the default is 90000 milliseconds.
 4. Publish the folder through GitHub Pages.
+
+## Live Probe
+
+After deployment, run:
+
+```bash
+node scripts/probe-live-site.js
+```
+
+The probe reads `config.js` for the Apps Script URL, then checks:
+
+- `?action=health` has `ok: true` and `cacheVersion`;
+- the deployed API no longer exposes the retired `QEF_Photos` contract;
+- `?action=site` returns page/photo/metric counts and response time;
+- `light-food-prep.imageId` is present, proving `QEF_Pages.封面圖片ID` reaches the
+  public API.
+
+If you deploy to a new `/exec` URL before updating `config.js`, pass it directly:
+
+```bash
+node scripts/probe-live-site.js "https://script.google.com/macros/s/.../exec"
+```
 
 ## Local Preview
 

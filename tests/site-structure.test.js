@@ -30,6 +30,10 @@ const codeGs = read("apps-script/Code.gs");
 const config = loadConfig();
 const heroPhotoTileFunction = extractFunction(app, "renderHeroPhotoTile");
 const heroPhotoPlaceholdersFunction = extractFunction(app, "renderHeroPhotoPlaceholders");
+const driveThumbnailUrlFunction = extractFunction(app, "driveThumbnailUrl");
+const getPhotoImageUrlFunction = extractFunction(app, "getPhotoImageUrl");
+const makeThumbnailUrlFunction = extractFunction(codeGs, "makeThumbnailUrl_");
+const liveProbe = read("scripts/probe-live-site.js");
 
 assert.match(html, /<html lang="zh-Hant">/);
 assert.match(html, /assets\/styles\.css/);
@@ -68,10 +72,18 @@ assert.match(app, /function renderHeroVisual/, "frontend should render hero visu
 assert.match(app, /function getHeroVisualPhotos/, "frontend should select photos for the hero collage");
 assert.match(app, /function extractDriveId/, "frontend should accept full Google Drive image links in Sheet fields");
 assert.match(app, /searchParams\.get\("id"\)/, "frontend should extract Drive IDs from open?id links");
+assert.match(app, /const IMAGE_SIZES = \{/, "frontend should centralize thumbnail sizes by UI purpose");
+assert.match(driveThumbnailUrlFunction, /function driveThumbnailUrl\(imageId, size\)/, "Drive thumbnail helper should accept an explicit size");
+assert.match(driveThumbnailUrlFunction, /Number\(size \|\| IMAGE_SIZES\.gallery\)/, "Drive thumbnail helper should default to gallery-sized images");
+assert.doesNotMatch(driveThumbnailUrlFunction, /w1600/, "Drive thumbnail helper should not force every image to w1600");
+assert.match(getPhotoImageUrlFunction, /function getPhotoImageUrl\(photo, size\)/, "photo URL helper should accept an explicit thumbnail size");
+assert.match(getPhotoImageUrlFunction, /extractDriveId\(photo\.src\)/, "photo URL helper should resize Drive thumbnailUrl values returned by Apps Script");
 assert.match(app, /heroVisual/, "frontend should cache the hero visual mount");
 assert.match(app, /hero-photo-collage/, "frontend should output hero photo collage markup");
 assert.match(app, /hero-photo-placeholder/, "hero visual should keep placeholders when photos are missing");
 assert.match(heroPhotoTileFunction, /<img src="\$\{escapeAttr\(imageUrl\)\}" alt="\$\{escapeAttr\(caption\)\}/, "hero photos should keep accessible alt text");
+assert.match(heroPhotoTileFunction, /decoding="async"/, "hero photos should decode asynchronously");
+assert.match(heroPhotoTileFunction, /fetchpriority="\$\{isMain \? "high" : "low"\}"/, "hero should prioritize the main photo and de-prioritize small hero thumbnails");
 assert.doesNotMatch(
   heroPhotoTileFunction,
   /<figcaption/,
@@ -100,7 +112,7 @@ assert.match(app, /function renderMainContentCard/, "main content carousel shoul
 assert.match(app, /main-content-card-track/, "main content carousel should include a horizontal card track");
 assert.match(app, /data-main-carousel-direction/, "main content carousel should include left and right controls");
 assert.match(app, /handleMainContentSlide/, "main content carousel controls should switch sections");
-assert.match(app, /getSectionCoverUrl\(section\)/, "main content cards should use section images as backgrounds");
+assert.match(app, /getSectionCoverUrl\(section, IMAGE_SIZES\.card\)/, "main content cards should use card-sized section images as backgrounds");
 assert.doesNotMatch(app, /arrangementTitle/, "home should not render the old Project Areas block");
 assert.doesNotMatch(app, /renderFeatureCard/, "old Project Areas cards should not remain");
 assert.doesNotMatch(app, /feature-grid/, "old Project Areas grid should not remain");
@@ -143,5 +155,13 @@ assert.match(codeGs, /CacheService\.getScriptCache/, "Apps Script should cache e
 assert.match(codeGs, /getCachedSitePayload_/, "Apps Script should cache the site API response");
 assert.match(codeGs, /clearQefCache/, "Apps Script should expose a manual cache clear helper");
 assert.match(codeGs, /warmQefSiteCache/, "Apps Script should expose a manual cache warm helper");
+assert.match(codeGs, /DEFAULT_THUMBNAIL_SIZE = 800/, "Apps Script should return moderate default thumbnail URLs for folder photos");
+assert.match(makeThumbnailUrlFunction, /function makeThumbnailUrl_\(imageId, size\)/, "Apps Script thumbnail helper should accept an explicit size");
+assert.match(makeThumbnailUrlFunction, /Number\(size \|\| DEFAULT_THUMBNAIL_SIZE\)/, "Apps Script thumbnail helper should default to the configured thumbnail size");
+assert.doesNotMatch(makeThumbnailUrlFunction, /w1600/, "Apps Script should not force every folder photo URL to w1600");
+
+assert.match(liveProbe, /cacheVersion/, "live probe should detect whether the deployed Apps Script is the current cache-versioned backend");
+assert.match(liveProbe, /QEF_Photos/, "live probe should warn when the deployed API still exposes the retired QEF_Photos contract");
+assert.match(liveProbe, /light-food-prep/, "live probe should check the known course cover-image regression row");
 
 console.log("QEF static site structure checks passed.");

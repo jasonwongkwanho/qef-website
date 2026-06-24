@@ -5,6 +5,13 @@
   const PLACEHOLDER_API = "";
   const DEFAULT_JSONP_TIMEOUT_MS = 90000;
   const COURSE_CONTENT_CATEGORY = "課程內容";
+  const IMAGE_SIZES = {
+    hero: 1200,
+    card: 800,
+    gallery: 800,
+    mosaic: 640,
+    thumb: 400
+  };
 
   const state = {
     settings: {},
@@ -306,7 +313,7 @@
     const seen = new Set();
 
     getNavSections().forEach(function (section) {
-      const imageUrl = getSectionCoverUrl(section);
+      const imageUrl = getSectionCoverUrl(section, IMAGE_SIZES.hero);
       if (imageUrl) {
         candidates.push({
           src: imageUrl,
@@ -317,7 +324,7 @@
     });
 
     state.photos.forEach(function (photo) {
-      const imageUrl = getPhotoImageUrl(photo);
+      const imageUrl = getPhotoImageUrl(photo, IMAGE_SIZES.hero);
       if (imageUrl) {
         candidates.push({
           src: imageUrl,
@@ -361,7 +368,7 @@
 
     return `
       <figure class="${tileClass}">
-        <img src="${escapeAttr(imageUrl)}" alt="${escapeAttr(caption)}" ${isMain ? "" : "loading=\"lazy\""} />
+        <img src="${escapeAttr(imageUrl)}" alt="${escapeAttr(caption)}" decoding="async" fetchpriority="${isMain ? "high" : "low"}" ${isMain ? "" : "loading=\"lazy\""} />
       </figure>
     `;
   }
@@ -457,7 +464,7 @@
     const isActive = section.id === state.activeSectionId;
     const activeClass = isActive ? " is-active" : "";
     const pressed = isActive ? "true" : "false";
-    const coverUrl = getSectionCoverUrl(section);
+    const coverUrl = getSectionCoverUrl(section, IMAGE_SIZES.card);
     const backgroundStyle = coverUrl ? ` style="--card-bg: url(&quot;${escapeAttr(coverUrl)}&quot;);"` : "";
 
     return `
@@ -514,7 +521,7 @@
   }
 
   function renderCourseContentCard(section) {
-    const coverUrl = getSectionCoverUrl(section);
+    const coverUrl = getSectionCoverUrl(section, IMAGE_SIZES.card);
     const photos = getPhotosForSection(section.id);
     const photoCount = photos.length;
 
@@ -531,7 +538,7 @@
           <a class="course-button" href="${escapeAttr(makeSectionHref(section.id))}" data-section-id="${escapeAttr(section.id)}">查看相簿</a>
         </div>
         <div class="course-card-media">
-          ${coverUrl ? `<img src="${escapeAttr(coverUrl)}" alt="${escapeAttr(section.title)}" loading="lazy" />` : `<div class="course-card-placeholder">${escapeHtml(section.navTitle || section.title)}</div>`}
+          ${coverUrl ? `<img src="${escapeAttr(coverUrl)}" alt="${escapeAttr(section.title)}" loading="lazy" decoding="async" />` : `<div class="course-card-placeholder">${escapeHtml(section.navTitle || section.title)}</div>`}
         </div>
       </article>
     `;
@@ -539,14 +546,14 @@
 
   function renderCourseContentDetail(section) {
     const photos = getPhotosForSection(section.id);
-    const coverUrl = getSectionCoverUrl(section);
+    const coverUrl = getSectionCoverUrl(section, IMAGE_SIZES.hero);
     const countLabel = photos.length ? String(photos.length) + " 張相片" : "相片稍後加入";
 
     return `
       <a class="back-link" href="./#course-content">返回課程內容</a>
 
       <article class="course-detail-hero">
-        ${coverUrl ? `<img src="${escapeAttr(coverUrl)}" alt="${escapeAttr(section.title)}" />` : ""}
+        ${coverUrl ? `<img src="${escapeAttr(coverUrl)}" alt="${escapeAttr(section.title)}" decoding="async" fetchpriority="high" />` : ""}
         <div class="course-detail-overlay">
           <span class="course-pill">${escapeHtml(section.category || COURSE_CONTENT_CATEGORY)}</span>
           <h2>${escapeHtml(section.title)}</h2>
@@ -586,7 +593,7 @@
   }
 
   function renderPhotoTile(photo, index) {
-    const imageUrl = getPhotoImageUrl(photo);
+    const imageUrl = getPhotoImageUrl(photo, IMAGE_SIZES.mosaic);
     const caption = photo.caption || "QEF 計劃相片";
 
     if (!imageUrl) {
@@ -599,14 +606,14 @@
 
     return `
       <figure class="photo-tile">
-        <img src="${escapeAttr(imageUrl)}" alt="${escapeAttr(caption)}" loading="lazy" />
+        <img src="${escapeAttr(imageUrl)}" alt="${escapeAttr(caption)}" loading="lazy" decoding="async" />
         <figcaption>${escapeHtml(caption)}</figcaption>
       </figure>
     `;
   }
 
   function renderGalleryPhoto(photo, index) {
-    const imageUrl = getPhotoImageUrl(photo);
+    const imageUrl = getPhotoImageUrl(photo, IMAGE_SIZES.gallery);
     const caption = photo.caption || "QEF 計劃相片";
 
     if (!imageUrl) {
@@ -619,7 +626,7 @@
 
     return `
       <figure class="gallery-photo">
-        <img src="${escapeAttr(imageUrl)}" alt="${escapeAttr(caption)}" loading="lazy" />
+        <img src="${escapeAttr(imageUrl)}" alt="${escapeAttr(caption)}" loading="lazy" decoding="async" />
         <figcaption>${escapeHtml(caption)}</figcaption>
       </figure>
     `;
@@ -662,22 +669,25 @@
     });
   }
 
-  function getSectionCoverUrl(section) {
-    const coverFromSection = driveThumbnailUrl(section.imageId);
+  function getSectionCoverUrl(section, size) {
+    const coverFromSection = driveThumbnailUrl(section.imageId, size);
     if (coverFromSection) return coverFromSection;
 
     const firstPhoto = getPhotosForSection(section.id)[0];
-    return firstPhoto ? getPhotoImageUrl(firstPhoto) : "";
+    return firstPhoto ? getPhotoImageUrl(firstPhoto, size) : "";
   }
 
-  function getPhotoImageUrl(photo) {
+  function getPhotoImageUrl(photo, size) {
     if (!photo) return "";
-    return photo.src || driveThumbnailUrl(photo.imageId);
+    const driveId = extractDriveId(photo.imageId) || extractDriveId(photo.src);
+    return driveId ? driveThumbnailUrl(driveId, size) : photo.src;
   }
 
-  function driveThumbnailUrl(imageId) {
+  function driveThumbnailUrl(imageId, size) {
     const id = extractDriveId(imageId);
-    return id ? "https://drive.google.com/thumbnail?id=" + encodeURIComponent(id) + "&sz=w1600" : "";
+    const requestedSize = Number(size || IMAGE_SIZES.gallery);
+    const safeSize = Number.isFinite(requestedSize) && requestedSize > 0 ? Math.round(requestedSize) : IMAGE_SIZES.gallery;
+    return id ? "https://drive.google.com/thumbnail?id=" + encodeURIComponent(id) + "&sz=w" + safeSize : "";
   }
 
   function extractDriveId(value) {
@@ -795,6 +805,7 @@
     driveThumbnailUrl,
     extractDriveId,
     findSection,
+    getPhotoImageUrl,
     getActiveSectionId,
     getNavSections,
     normalizeSectionId,
