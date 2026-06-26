@@ -26,6 +26,7 @@ Google Drive 圖片 ID 或相片資料夾 ID
 | `assets/app.js` | API 載入、分頁切換、內容及相片渲染；已設定 API 時先顯示載入狀態，避免預設內容閃現 |
 | `apps-script/Code.gs` | Apps Script read-only API 參考碼；包含整站及相片資料夾快取 |
 | `scripts/probe-live-site.js` | 部署後檢查 Apps Script 版本、快取狀態、封面圖片ID 及 live payload 速度 |
+| `scripts/snapshot-qef-defaults.js` | 將 live Apps Script payload 寫入 `config.js`，更新 GitHub Pages fallback 預設資料 |
 | `tests/site-structure.test.js` | 靜態結構檢查 |
 
 ## Google Sheet 後台
@@ -61,3 +62,13 @@ Spreadsheet ID：
 如未設定 `apiBaseUrl`，前台會使用 `config.js` 內的示例資料，方便先預覽設計。
 
 已設定 `apiBaseUrl` 時，前台會先顯示載入狀態，等 Apps Script API 回傳後才渲染 Google Sheet 最新內容，避免先看到預設內容或預設圖片再跳到新版。只有未設定 API 或 API 載入失敗時，才會使用 `config.js` 的示例資料作預覽或 fallback。Apps Script 會快取 `site` payload 約 10 分鐘，相片資料夾掃描結果最多 6 小時；如剛修改相片資料夾或重新部署，可在 Apps Script 執行 `clearQefCache()` 或 `warmQefSiteCache()`。
+
+## 同步預設資料
+
+如要把現時 Google Sheet 後台內容變成 `config.js` fallback 預設資料，可在 repo 執行：
+
+```bash
+node scripts/snapshot-qef-defaults.js
+```
+
+工具會讀取現有 `apiBaseUrl?action=site`，把 live 的 `QEF_Settings`、`QEF_Pages`、`QEF_Metrics` 及 Drive 相片清單寫入 `config.js`，並保留 Apps Script URL、Google Sheet ID 及 Drive root 設定。這是一次性 snapshot；之後如再修改 Google Sheet，要重新執行一次才會更新預設資料。

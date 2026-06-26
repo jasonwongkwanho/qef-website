@@ -34,6 +34,8 @@ const driveThumbnailUrlFunction = extractFunction(app, "driveThumbnailUrl");
 const getPhotoImageUrlFunction = extractFunction(app, "getPhotoImageUrl");
 const makeThumbnailUrlFunction = extractFunction(codeGs, "makeThumbnailUrl_");
 const liveProbe = read("scripts/probe-live-site.js");
+const snapshotScriptPath = path.join(root, "scripts", "snapshot-qef-defaults.js");
+const snapshotScript = fs.existsSync(snapshotScriptPath) ? read("scripts/snapshot-qef-defaults.js") : "";
 const renderShellFunction = extractFunction(app, "renderShell");
 const initFunction = extractFunction(app, "init");
 const renderMainContentCardFunction = extractFunction(app, "renderMainContentCard");
@@ -199,5 +201,11 @@ assert.match(liveProbe, /cacheVersion/, "live probe should detect whether the de
 assert.match(liveProbe, /deployed cacheVersion/, "live probe should warn when the deployed Apps Script cache version lags behind local Code.gs");
 assert.match(liveProbe, /QEF_Photos/, "live probe should warn when the deployed API still exposes the retired QEF_Photos contract");
 assert.match(liveProbe, /light-food-prep/, "live probe should check the known course cover-image regression row");
+assert.ok(fs.existsSync(snapshotScriptPath), "snapshot tool should exist for refreshing config.js fallback data from live QEF_Pages");
+assert.match(snapshotScript, /action=site/, "snapshot tool should read the public Apps Script site payload");
+assert.match(snapshotScript, /apiBaseUrl/, "snapshot tool should preserve the configured Apps Script URL");
+assert.match(snapshotScript, /sections:\s*payload\.pages/, "snapshot tool should copy QEF_Pages into config.js sections");
+assert.match(snapshotScript, /photos:\s*payload\.photos/, "snapshot tool should copy live Drive photos into config.js photos");
+assert.match(snapshotScript, /metrics:\s*payload\.metrics/, "snapshot tool should copy QEF_Metrics into config.js metrics");
 
 console.log("QEF static site structure checks passed.");
