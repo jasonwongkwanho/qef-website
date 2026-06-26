@@ -27,12 +27,9 @@
     cacheElements();
     state.activeSectionId = getActiveSectionId(window.location.search);
     const samplePreview = shouldRenderSamplePreview();
+    const fallbackData = buildSampleSiteData();
 
-    if (samplePreview) {
-      renderSiteData(buildSampleSiteData());
-    } else {
-      showLoading();
-    }
+    renderSiteData(fallbackData);
 
     loadSiteData()
       .then(function (data) {
@@ -40,7 +37,7 @@
       })
       .catch(function (error) {
         if (CONFIG.useSampleDataWhenApiMissing) {
-          if (!samplePreview) renderSiteData(buildSampleSiteData());
+          if (!samplePreview) renderSiteData(fallbackData);
           showWarning("暫時未能連線至 Google Sheet，頁面已改用預設內容。稍後重新整理可再次嘗試。");
         } else {
           showError(error.message || "未能載入 QEF 計劃資料。");

@@ -54,6 +54,8 @@ assert.match(html, /<header class="site-header">[\s\S]*class="brand"[\s\S]*asset
 assert.match(html, /id="schoolNameZh"/, "header brand should include the Chinese school name mount");
 assert.match(html, /id="schoolNameEn"/, "header brand should include the English school name mount");
 assert.match(html, /id="heroTitle"/, "hero title should be addressable from live settings");
+assert.match(html, /<title>普光高中教育︰實境教學<\/title>/, "initial HTML title should match the current config snapshot");
+assert.match(html, /<h1 id="heroTitle">普光高中教育︰實境教學<\/h1>/, "initial hero title should not show stale pre-snapshot content while API loads");
 assert.match(html, /<nav class="site-nav" id="siteNav"[^>]*><\/nav>/, "top nav should stay an empty dynamic mount");
 
 assert.ok(config, "QEF_SITE_CONFIG should exist");
@@ -85,6 +87,8 @@ assert.match(app, /DEFAULT_JSONP_TIMEOUT_MS/, "frontend should use a named JSONP
 assert.doesNotMatch(app, /}, 20000\)/, "frontend should not hard-code a 20 second API timeout");
 assert.match(app, /buildSampleSiteData/, "frontend should be able to render sample data before live API returns");
 assert.match(initFunction, /const samplePreview = shouldRenderSamplePreview\(\)/, "frontend should distinguish local sample preview from live API loading");
+assert.match(initFunction, /const fallbackData = buildSampleSiteData\(\)/, "frontend should build a config.js snapshot before live API returns");
+assert.match(initFunction, /renderSiteData\(fallbackData\)/, "frontend should render the config.js snapshot immediately instead of showing stale HTML while API loads");
 assert.match(app, /function shouldRenderSamplePreview/, "sample data should be a no-API preview path, not the normal live API first paint");
 assert.doesNotMatch(app, /function shouldRenderSampleWhileApiLoads/, "live API loading should not render stale sample content first");
 assert.match(app, /heroTitle: document\.getElementById\("heroTitle"\)/, "frontend should cache the hero title mount");

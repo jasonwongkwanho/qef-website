@@ -23,7 +23,7 @@ Google Drive 圖片 ID 或相片資料夾 ID
 | `index.html` | 前台 HTML 結構 |
 | `config.js` | 網站設定、Google Sheet 後台資料、示例 fallback |
 | `assets/styles.css` | 前台視覺及 responsive 樣式 |
-| `assets/app.js` | API 載入、分頁切換、內容及相片渲染；已設定 API 時先顯示載入狀態，避免預設內容閃現 |
+| `assets/app.js` | API 載入、分頁切換、內容及相片渲染；已設定 API 時先顯示 `config.js` snapshot，再以 live API 更新 |
 | `apps-script/Code.gs` | Apps Script read-only API 參考碼；包含整站及相片資料夾快取 |
 | `scripts/probe-live-site.js` | 部署後檢查 Apps Script 版本、快取狀態、封面圖片ID 及 live payload 速度 |
 | `scripts/snapshot-qef-defaults.js` | 將 live Apps Script payload 寫入 `config.js`，更新 GitHub Pages fallback 預設資料 |
@@ -61,7 +61,7 @@ Spreadsheet ID：
 
 如未設定 `apiBaseUrl`，前台會使用 `config.js` 內的示例資料，方便先預覽設計。
 
-已設定 `apiBaseUrl` 時，前台會先顯示載入狀態，等 Apps Script API 回傳後才渲染 Google Sheet 最新內容，避免先看到預設內容或預設圖片再跳到新版。只有未設定 API 或 API 載入失敗時，才會使用 `config.js` 的示例資料作預覽或 fallback。Apps Script 會快取 `site` payload 約 10 分鐘，相片資料夾掃描結果最多 6 小時；如剛修改相片資料夾或重新部署，可在 Apps Script 執行 `clearQefCache()` 或 `warmQefSiteCache()`。
+已設定 `apiBaseUrl` 時，前台會先用 `config.js` 內的 snapshot 顯示內容，等 Apps Script API 回傳後再以 Google Sheet 最新內容覆蓋，避免首屏停留在舊 HTML 標題或 placeholder。只有未設定 API 或 API 載入失敗時，才會持續使用 `config.js` 的 snapshot 作預覽或 fallback。Apps Script 會快取 `site` payload 約 10 分鐘，相片資料夾掃描結果最多 6 小時；如剛修改相片資料夾或重新部署，可在 Apps Script 執行 `clearQefCache()` 或 `warmQefSiteCache()`。
 
 ## 同步預設資料
 
