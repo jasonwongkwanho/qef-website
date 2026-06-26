@@ -37,6 +37,10 @@ const liveProbe = read("scripts/probe-live-site.js");
 const renderShellFunction = extractFunction(app, "renderShell");
 const initFunction = extractFunction(app, "init");
 const renderMainContentCardFunction = extractFunction(app, "renderMainContentCard");
+const normalizeSectionsFunction = extractFunction(app, "normalizeSections");
+const getDistinctSectionBodyFunction = extractFunction(app, "getDistinctSectionBody");
+const splitDescriptionParagraphsFunction = extractFunction(app, "splitDescriptionParagraphs");
+const getSummaryFromDescriptionFunction = extractFunction(codeGs, "getSummaryFromDescription_");
 
 assert.match(html, /<html lang="zh-Hant">/);
 assert.match(html, /assets\/styles\.css/);
@@ -84,7 +88,15 @@ assert.doesNotMatch(app, /function shouldRenderSampleWhileApiLoads/, "live API l
 assert.match(app, /heroTitle: document\.getElementById\("heroTitle"\)/, "frontend should cache the hero title mount");
 assert.match(renderShellFunction, /setText\(els\.heroTitle, siteTitle\)/, "QEF_Settings site_title should update the visible hero title");
 assert.match(renderShellFunction, /state\.settings\.footer_text/, "QEF_Settings footer_text should be able to update the footer");
-assert.match(app, /state\.settings\.homepage_intro/, "QEF_Settings homepage_intro should update visible homepage content");
+assert.strictEqual(config.siteTitle, "普光高中教育︰實境教學", "fallback site title should match the live QEF setting");
+assert.doesNotMatch(app, /homepage_intro/, "homepage card copy should come from QEF_Pages 相關簡介, not QEF_Settings homepage_intro");
+assert.match(normalizeSectionsFunction, /const description = getSectionDescription\(item\)/, "frontend should normalize each row through one QEF_Pages description source");
+assert.match(normalizeSectionsFunction, /summary: getDescriptionLead\(description\)/, "card lead should come from the first description paragraph");
+assert.match(normalizeSectionsFunction, /body: description/, "card body should keep the full QEF_Pages description for detail splitting");
+assert.match(splitDescriptionParagraphsFunction, /split\(\/\\r\?\\n\\s\*\\r\?\\n\/\)/, "QEF_Pages description paragraphs should be separated by one blank line");
+assert.match(getDistinctSectionBodyFunction, /splitDescriptionParagraphs\(section && section\.body\)/, "white detail text should be derived from the full description body");
+assert.match(getDistinctSectionBodyFunction, /descriptionParagraphs\.slice\(1\)\.join\(" "\)/, "white detail text should use paragraphs after the lead");
+assert.match(getSummaryFromDescriptionFunction, /splitDescriptionParagraphs_\(description\)/, "Apps Script summary should follow the same paragraph split contract");
 assert.match(app, /showWarning/, "frontend should keep fallback content visible on slow API failures");
 assert.match(app, /function renderHeroVisual/, "frontend should render hero visual from site photos");
 assert.match(app, /function getHeroVisualPhotos/, "frontend should select photos for the hero collage");
@@ -168,6 +180,8 @@ assert.match(codeGs, /相關代號/, "Apps Script should read the new QEF_Pages 
 assert.match(codeGs, /相關名稱/, "Apps Script should read the new QEF_Pages schema");
 assert.match(codeGs, /資料夾ID/, "Apps Script should read the new QEF_Pages schema");
 assert.match(codeGs, /封面圖片ID/, "Apps Script should read the new QEF_Pages schema");
+assert.match(codeGs, /const description = getText_\(row\['相關簡介'\]\)/, "Apps Script card copy should come directly from QEF_Pages 相關簡介");
+assert.doesNotMatch(codeGs, /詳細介紹|頁面摘要/, "Apps Script should not fall back to hidden legacy description columns for card copy");
 assert.match(codeGs, /acc\[header\] === undefined/, "Apps Script should keep the first value when hidden legacy headers are present");
 assert.match(codeGs, /doGet/);
 assert.match(codeGs, /jsonp/);
@@ -182,6 +196,7 @@ assert.match(makeThumbnailUrlFunction, /Number\(size \|\| DEFAULT_THUMBNAIL_SIZE
 assert.doesNotMatch(makeThumbnailUrlFunction, /w1600/, "Apps Script should not force every folder photo URL to w1600");
 
 assert.match(liveProbe, /cacheVersion/, "live probe should detect whether the deployed Apps Script is the current cache-versioned backend");
+assert.match(liveProbe, /deployed cacheVersion/, "live probe should warn when the deployed Apps Script cache version lags behind local Code.gs");
 assert.match(liveProbe, /QEF_Photos/, "live probe should warn when the deployed API still exposes the retired QEF_Photos contract");
 assert.match(liveProbe, /light-food-prep/, "live probe should check the known course cover-image regression row");
 

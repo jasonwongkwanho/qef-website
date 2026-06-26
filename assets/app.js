@@ -92,7 +92,6 @@
         school_name_en: CONFIG.schoolNameEn,
         site_subtitle: CONFIG.siteSubtitle,
         plan_title: CONFIG.planTitle,
-        homepage_intro: "",
         footer_text: CONFIG.footerText
       },
       pages: CONFIG.sections || [],
@@ -169,6 +168,8 @@
   function normalizeSections(items) {
     return items
       .map(function (item) {
+        const description = getSectionDescription(item);
+
         return {
           id: normalizeSectionId(item.id || item.pageId || item.relatedId || item["相關代號"] || item["頁面代號"]),
           title: String(item.title || item.name || item.relatedName || item["相關名稱"] || item["頁面名稱"] || "").trim(),
@@ -176,8 +177,8 @@
           category: normalizeCategory(item.category || item["分類"]),
           order: Number(item.order || item["排序"] || 999),
           date: String(item.date || item.activityDate || item["活動日期"] || "").trim(),
-          summary: String(item.summary || item["頁面摘要"] || item.description || item["相關簡介"] || "").trim().split(/\r?\n/)[0],
-          body: String(item.body || item.description || item["相關簡介"] || item["詳細介紹"] || item.summary || "").trim(),
+          summary: getDescriptionLead(description),
+          body: description,
           imageId: extractDriveId(item.imageId || item.coverImageId || item["封面圖片ID"] || item["主要圖片ID"]),
           folderId: extractDriveId(item.folderId || item.driveFolderId || item["資料夾ID"] || item["相片資料夾ID"]),
           published: parseBoolean(item.published !== undefined ? item.published : item["公開顯示"])
@@ -212,6 +213,19 @@
       });
   }
 
+  function getSectionDescription(item) {
+    const explicitDescription = String(item.description || item["相關簡介"] || item["詳細介紹"] || "").trim();
+    if (explicitDescription) return explicitDescription;
+
+    const body = String(item.body || "").trim();
+    const summary = String(item.summary || item["頁面摘要"] || "").trim();
+    if (summary && body && body !== summary && !normalizeInlineText(body).startsWith(normalizeInlineText(summary))) {
+      return summary + "\n\n" + body;
+    }
+
+    return body || summary;
+  }
+
   function normalizeMetrics(items) {
     return items
       .map(function (item) {
@@ -235,7 +249,7 @@
   function renderShell() {
     const schoolZh = state.settings.school_name_zh || CONFIG.schoolNameZh || "";
     const schoolEn = state.settings.school_name_en || CONFIG.schoolNameEn || "";
-    const siteTitle = state.settings.site_title || CONFIG.siteTitle || "普光 QEF 計劃";
+    const siteTitle = state.settings.site_title || CONFIG.siteTitle || "普光高中教育︰實境教學";
     const subtitle = state.settings.site_subtitle || CONFIG.siteSubtitle || "";
     const planTitle = state.settings.plan_title || CONFIG.planTitle || "";
     const footerText = state.settings.footer_text || CONFIG.footerText || "QEF 計劃公開介紹網站";
@@ -406,19 +420,12 @@
   }
 
   function renderHome(section) {
-    const homepageIntro = String(state.settings.homepage_intro || "").trim();
-    const displaySection = homepageIntro
-      ? Object.assign({}, section, {
-        summary: homepageIntro.split(/\r?\n/)[0],
-        body: homepageIntro
-      })
-      : section;
     const modules = state.sections.filter(function (item) {
       return item.category === COURSE_CONTENT_CATEGORY;
     });
 
     return `
-      ${renderMainContentCarousel(displaySection)}
+      ${renderMainContentCarousel()}
 
       ${modules.length ? `
         <section class="content-section course-content-section" id="course-content" aria-labelledby="moduleTitle">
@@ -493,6 +500,11 @@
   }
 
   function getDistinctSectionBody(section) {
+    const descriptionParagraphs = splitDescriptionParagraphs(section && section.body);
+    if (descriptionParagraphs.length > 1) {
+      return descriptionParagraphs.slice(1).join(" ");
+    }
+
     const summary = normalizeInlineText(section && section.summary);
     const body = normalizeInlineText(section && section.body);
     if (!body) return "";
@@ -502,6 +514,18 @@
       return body.slice(summary.length).replace(/^[\s。！？；:：,，.]+/, "").trim();
     }
     return body;
+  }
+
+  function getDescriptionLead(text) {
+    return splitDescriptionParagraphs(text)[0] || "";
+  }
+
+  function splitDescriptionParagraphs(text) {
+    return String(text == null ? "" : text)
+      .trim()
+      .split(/\r?\n\s*\r?\n/)
+      .map(normalizeInlineText)
+      .filter(Boolean);
   }
 
   function normalizeInlineText(text) {
@@ -834,6 +858,9 @@
     extractDriveId,
     findSection,
     getPhotoImageUrl,
+    getDistinctSectionBody,
+    getDescriptionLead,
+    getSectionDescription,
     getActiveSectionId,
     getNavSections,
     normalizeSectionId,

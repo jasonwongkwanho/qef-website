@@ -23,7 +23,7 @@ Google Drive 圖片 ID 或相片資料夾 ID
 | `index.html` | 前台 HTML 結構 |
 | `config.js` | 網站設定、Google Sheet 後台資料、示例 fallback |
 | `assets/styles.css` | 前台視覺及 responsive 樣式 |
-| `assets/app.js` | API 載入、分頁切換、內容及相片渲染；API 載入較慢時先顯示示例內容 |
+| `assets/app.js` | API 載入、分頁切換、內容及相片渲染；已設定 API 時先顯示載入狀態，避免預設內容閃現 |
 | `apps-script/Code.gs` | Apps Script read-only API 參考碼；包含整站及相片資料夾快取 |
 | `scripts/probe-live-site.js` | 部署後檢查 Apps Script 版本、快取狀態、封面圖片ID 及 live payload 速度 |
 | `tests/site-structure.test.js` | 靜態結構檢查 |
@@ -44,7 +44,7 @@ Spreadsheet ID：
 
 `QEF_Pages` 現已合併頁面、課程內容及封面相片設定。`QEF_Photos` 已停用，只保留作舊資料備份，網站不再讀取。
 
-`QEF_Settings` 可控制頁面可見文字，包括 `site_title`、`school_name_zh`、`school_name_en`、`site_subtitle`、`plan_title`、`homepage_intro` 及 `footer_text`。如要改首頁下方的指標卡，例如推行時期或受惠人數，請改 `QEF_Metrics`。
+`QEF_Settings` 可控制頁面殼層文字，包括 `site_title`、`school_name_zh`、`school_name_en`、`site_subtitle`、`plan_title` 及 `footer_text`。首頁及各分頁主卡片的主旨段、白字解釋段均由 `QEF_Pages` 對應列的 `相關簡介` 控制：第一段為主旨段，留一行空行後的段落為白字解釋段。如要改首頁下方的指標卡，例如推行時期或受惠人數，請改 `QEF_Metrics`。
 
 `Albums` 是原有相簿資料，不應因 QEF 網站而修改。
 

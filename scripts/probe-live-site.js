@@ -7,12 +7,19 @@ const vm = require("node:vm");
 
 const root = path.resolve(__dirname, "..");
 const configPath = path.join(root, "config.js");
+const codeGsPath = path.join(root, "apps-script", "Code.gs");
 
 function loadConfig() {
   const sandbox = { window: {} };
   vm.createContext(sandbox);
   vm.runInContext(fs.readFileSync(configPath, "utf8"), sandbox, { filename: configPath });
   return sandbox.window.QEF_SITE_CONFIG || {};
+}
+
+function getLocalCacheVersion() {
+  const source = fs.readFileSync(codeGsPath, "utf8");
+  const match = source.match(/const CACHE_VERSION = ['"]([^'"]+)['"]/);
+  return match ? match[1] : "";
 }
 
 function buildApiUrl(baseUrl, action) {
@@ -51,8 +58,21 @@ function fail(message) {
   process.exitCode = 1;
 }
 
+function normalizeInlineText(value) {
+  return String(value == null ? "" : value).replace(/\s+/g, " ").trim();
+}
+
+function splitDescriptionParagraphs(value) {
+  return String(value == null ? "" : value)
+    .trim()
+    .split(/\r?\n\s*\r?\n/)
+    .map(normalizeInlineText)
+    .filter(Boolean);
+}
+
 async function main() {
   const config = loadConfig();
+  const localCacheVersion = getLocalCacheVersion();
   const apiBaseUrl = process.argv[2] || config.apiBaseUrl;
 
   if (!apiBaseUrl) {
@@ -67,6 +87,9 @@ async function main() {
 
   if (health.json.ok !== true) fail("health did not return ok:true");
   if (!health.json.cacheVersion) fail("health is missing cacheVersion; deployed Code.gs is likely old");
+  if (localCacheVersion && health.json.cacheVersion && health.json.cacheVersion !== localCacheVersion) {
+    warn(`deployed cacheVersion ${health.json.cacheVersion} does not match local ${localCacheVersion}; redeploy Apps Script`);
+  }
   if (JSON.stringify(health.json).includes("QEF_Photos")) {
     fail("health still exposes QEF_Photos; redeploy the current apps-script/Code.gs");
   }
@@ -77,6 +100,7 @@ async function main() {
   const metrics = Array.isArray(site.json.metrics) ? site.json.metrics : [];
   const settings = site.json.settings && typeof site.json.settings === "object" ? site.json.settings : null;
   const lightFoodPrep = pages.find((page) => page.id === "light-food-prep");
+  const introPage = pages.find((page) => page.id === "home" || page.category === "計劃簡介");
 
   console.log(`site status=${site.status} ms=${site.elapsedMs} bytes=${site.bytes}`);
   console.log(`payload pages=${pages.length} photos=${photos.length} metrics=${metrics.length}`);
@@ -90,7 +114,6 @@ async function main() {
       if (!String(settings[key] || "").trim()) fail(`settings.${key} is empty`);
     });
     console.log(`settings site_title=${settings.site_title || "(missing)"}`);
-    if (!String(settings.homepage_intro || "").trim()) warn("settings.homepage_intro is empty; homepage intro will fall back to QEF_Pages home content");
     if (!String(settings.footer_text || "").trim()) warn("settings.footer_text is empty; footer text will fall back to config.js");
   }
 
@@ -101,6 +124,15 @@ async function main() {
     fail("light-food-prep imageId is empty; QEF_Pages 封面圖片ID is not reaching the public API");
   } else {
     console.log(`light-food-prep imageId=${lightFoodPrep.imageId}`);
+  }
+
+  if (introPage) {
+    const introParagraphs = splitDescriptionParagraphs(introPage.body);
+    if (introParagraphs.length < 2) {
+      warn("QEF_Pages 計劃簡介.相關簡介 is not split by a blank line; white detail text may be empty");
+    } else if (normalizeInlineText(introPage.summary) !== introParagraphs[0]) {
+      warn("QEF_Pages 計劃簡介 summary does not match the first 相關簡介 paragraph; redeploy Apps Script after updating Code.gs");
+    }
   }
 
   const oversizedUrls = photos.filter((photo) => String(photo.thumbnailUrl || photo.src || "").includes("sz=w1600"));

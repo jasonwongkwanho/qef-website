@@ -17,7 +17,6 @@ Supported visible setting keys:
 | `school_name_en` | Header brand English name |
 | `site_subtitle` | Homepage hero subtitle |
 | `plan_title` | Homepage hero plan title |
-| `homepage_intro` | Homepage main introduction card |
 | `footer_text` | Footer description text |
 
 Other keys can remain in `QEF_Settings` as administrative notes or future
@@ -33,7 +32,7 @@ count needs to change, update `QEF_Metrics`.
 | `資料夾ID` | Optional Google Drive folder ID for the gallery |
 | `分類` | `計劃簡介`, `實況咖啡店`, `課程安排`, `電子營運`, `學習歷程`, `社區連繫`, `預期成效`, or `課程內容` |
 | `活動日期` | Optional activity date, displayed on album-style pages |
-| `相關簡介` | Public summary/body text |
+| `相關簡介` | Public card text. The first paragraph is the lead/主旨段; after one blank line, following paragraph(s) become the white explanation/detail text. |
 | `封面圖片ID` | Optional Google Drive image ID for the card or hero cover |
 | `公開顯示` | Checkbox; TRUE rows are public |
 | `內部備註` | Internal note, not shown |
@@ -41,6 +40,10 @@ count needs to change, update `QEF_Metrics`.
 Rows whose `分類` is one of the seven main section labels appear in top
 navigation. Rows whose `分類` is `課程內容` appear as album-style course-content
 cards and detail pages.
+
+For main-section cards, do not use `QEF_Settings` for the card copy. Put both
+the lead and detail copy in the row's `相關簡介`: first paragraph for the lead,
+one blank line, then the white explanation/detail paragraph(s).
 
 Columns `J:T` may contain hidden legacy compatibility values while an older Apps
 Script deployment is still active. Day-to-day editing should use only columns

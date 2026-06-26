@@ -20,7 +20,7 @@ const NAV_CATEGORY_ORDER = [
 const MAX_FOLDER_PHOTOS_PER_PAGE = 12;
 const MAX_FOLDER_PHOTO_DEPTH = 3;
 const DEFAULT_THUMBNAIL_SIZE = 800;
-const CACHE_VERSION = '2026-06-25-v1';
+const CACHE_VERSION = '2026-06-26-v1';
 const SITE_CACHE_KEY = 'qef-site:' + CACHE_VERSION;
 const SITE_CACHE_TTL_SECONDS = 600;
 const FOLDER_PHOTO_CACHE_TTL_SECONDS = 21600;
@@ -101,7 +101,7 @@ function readPages_(sheet) {
 
 function mapPageRow_(row, index) {
   const category = getText_(row['分類']);
-  const description = getText_(row['相關簡介'] || row['詳細介紹'] || row['頁面摘要']);
+  const description = getText_(row['相關簡介']);
   const id = getText_(row['相關代號'] || row['頁面代號']);
   const title = getText_(row['相關名稱'] || row['頁面名稱']);
   const order = Number(row['排序'] || '') || index + 1;
@@ -129,11 +129,19 @@ function getNavTitle_(row, title, category) {
 }
 
 function getSummaryFromDescription_(description) {
+  const paragraphs = splitDescriptionParagraphs_(description);
+  return paragraphs[0] || '';
+}
+
+function splitDescriptionParagraphs_(description) {
   return getText_(description)
-    .split(/\r?\n/)
-    .filter(function (line) {
-      return line.trim();
-    })[0] || '';
+    .split(/\r?\n\s*\r?\n/)
+    .map(function (paragraph) {
+      return paragraph.replace(/\s+/g, ' ').trim();
+    })
+    .filter(function (paragraph) {
+      return paragraph;
+    });
 }
 
 function formatDateForApi_(value) {

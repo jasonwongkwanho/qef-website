@@ -1,7 +1,7 @@
 window.QEF_SITE_CONFIG = {
   schoolNameZh: "香海正覺蓮社佛教普光學校",
   schoolNameEn: "HHCKLA Buddhist Po Kwong School",
-  siteTitle: "普光 QEF 計劃",
+  siteTitle: "普光高中教育︰實境教學",
   siteSubtitle: "以真實情境連繫課程、職場與生活，讓學生在參與中建立能力與信心。",
   planTitle: "創設實況學習場地（咖啡店），提升學生生涯規劃及職前培訓，強化獨立生活能力",
   footerText: "QEF 計劃公開介紹網站",
