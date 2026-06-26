@@ -65,6 +65,8 @@ Spreadsheet ID：
 
 已設定 `apiBaseUrl` 時，前台會先用 `config.js` 內的 snapshot 顯示內容，等 Apps Script API 回傳後再以 Google Sheet 最新內容覆蓋，避免首屏停留在舊 HTML 標題或 placeholder。只有未設定 API 或 API 載入失敗時，才會持續使用 `config.js` 的 snapshot 作預覽或 fallback。Apps Script 會快取 `site` payload 約 10 分鐘，相片資料夾掃描結果最多 6 小時；如剛修改相片資料夾或重新部署，可在 Apps Script 執行 `clearQefCache()` 或 `warmQefSiteCache()`。
 
+GitHub Pages 會快取靜態檔案約 10 分鐘；如修改 `config.js`、`assets/styles.css` 或 `assets/app.js` 的公開行為，請同步更新 `index.html` 內這三個檔案 URL 的 `?v=` 版本字串，避免瀏覽器繼續使用舊版 CSS/JS。
+
 ## 同步預設資料
 
 如要把現時 Google Sheet 後台內容變成 `config.js` fallback 預設資料，可在 repo 執行：

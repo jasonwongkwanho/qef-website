@@ -47,9 +47,11 @@ const splitDescriptionParagraphsFunction = extractFunction(app, "splitDescriptio
 const getSummaryFromDescriptionFunction = extractFunction(codeGs, "getSummaryFromDescription_");
 
 assert.match(html, /<html lang="zh-Hant">/);
-assert.match(html, /assets\/styles\.css/);
-assert.match(html, /config\.js/);
-assert.match(html, /assets\/app\.js/);
+assert.match(html, /assets\/styles\.css\?v=[^"]+/, "stylesheet URL should include an asset version to bypass stale GitHub Pages/browser cache");
+assert.match(html, /config\.js\?v=[^"]+/, "config URL should include an asset version to refresh the snapshot after deploys");
+assert.match(html, /assets\/app\.js\?v=[^"]+/, "app URL should include an asset version to bypass stale GitHub Pages/browser cache");
+assert.doesNotMatch(html, /href="\.\/assets\/styles\.css"/, "stylesheet should not be referenced without a cache-busting version");
+assert.doesNotMatch(html, /src="\.\/assets\/app\.js"/, "app script should not be referenced without a cache-busting version");
 assert.match(html, /id="heroVisual"/, "hero visual should have a JS-rendered photo collage mount");
 assert.ok(fs.existsSync(path.join(root, "assets", "school-logo.png")), "school logo asset should exist");
 assert.match(html, /<header class="site-header">[\s\S]*class="brand"[\s\S]*assets\/school-logo\.png/, "header brand should include the school logo");
