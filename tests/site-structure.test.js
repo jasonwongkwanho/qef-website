@@ -62,6 +62,8 @@ assert.match(html, /alt="優質教育基金 Quality Education Fund"/, "QEF logo 
 assert.match(html, /id="schoolNameZh"/, "header brand should include the Chinese school name mount");
 assert.match(html, /id="schoolNameEn"/, "header brand should include the English school name mount");
 assert.match(html, /id="heroTitle"/, "hero title should be addressable from live settings");
+assert.match(html, /<p class="eyebrow">優質教育基金資助計劃<\/p>/, "hero eyebrow should use the approved Chinese QEF wording");
+assert.doesNotMatch(html, /Quality Education Fund Project/, "hero eyebrow should not show the old English wording");
 assert.match(html, /<title>普光高中教育︰實境教學<\/title>/, "initial HTML title should match the current config snapshot");
 assert.match(html, /<h1 id="heroTitle">普光高中教育︰實境教學<\/h1>/, "initial hero title should not show stale pre-snapshot content while API loads");
 assert.match(html, /<nav class="site-nav" id="siteNav"[^>]*><\/nav>/, "top nav should stay an empty dynamic mount");
