@@ -905,6 +905,20 @@ img {
   margin: 0;
 }
 
+.footer-qef-logo {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.footer-qef-logo img {
+  width: clamp(160px, 18vw, 220px);
+  height: auto;
+  padding: 6px 8px;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
 .footer-brand {
   color: var(--ink);
   font-weight: 900;
@@ -1080,5 +1094,13 @@ img {
     flex-direction: column;
     justify-content: center;
     padding: 22px 0;
+  }
+
+  .footer-qef-logo {
+    margin-left: 0;
+  }
+
+  .footer-qef-logo img {
+    width: min(210px, 58vw);
   }
 }
