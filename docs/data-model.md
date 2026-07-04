@@ -59,10 +59,11 @@ photo.
 Folder-photo captions use the Drive file name without its extension; the course
 or album title is not prepended to each photo caption.
 
-Folder photo scans are cached per page/folder for up to 6 hours to avoid slow
-Drive traversal on every public page load. After changing Drive folder contents,
-run `clearQefCache()` or `warmQefSiteCache()` in the Apps Script editor if the
-website must update immediately.
+Folder photos are rescanned from Drive whenever the short cached `site` payload
+is rebuilt. After changing Drive folder contents, newly added photos normally
+appear after the current site cache expires. Run `clearQefCache()` or
+`warmQefSiteCache()` in the Apps Script editor if the website must update
+immediately.
 
 ## `QEF_Photos`
 
@@ -70,7 +71,7 @@ This tab is a legacy backup only. The website no longer reads it. Add or edit
 cover images in `QEF_Pages.封面圖片ID`, and add gallery photos by placing image
 files inside the row's `QEF_Pages.資料夾ID` Drive folder.
 
-Sheet content is included in the cached `site` payload for about 10 minutes.
+Sheet content is included in the cached `site` payload for about 5 minutes.
 Run `clearQefCache()` and then `warmQefSiteCache()` after urgent Sheet edits if
 the public website must refresh before normal cache expiry.
 

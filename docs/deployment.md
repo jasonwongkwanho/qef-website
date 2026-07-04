@@ -17,10 +17,11 @@ The API reads image files from `QEF_Pages.資料夾ID`, including nested child
 folders, and returns Drive thumbnail URLs. `QEF_Photos` is no longer part of the
 public API contract.
 
-The Apps Script caches the full `site` payload for about 10 minutes and folder
-photo metadata for up to 6 hours. After deploying `Code.gs` or changing Drive
-folder contents, run `clearQefCache()` and then `warmQefSiteCache()` in the Apps
-Script editor.
+The Apps Script caches the full `site` payload for about 5 minutes. Folder
+photos are rescanned from Drive whenever that site payload cache is rebuilt, so
+newly added Drive photos no longer wait on a separate long-lived folder cache.
+After deploying `Code.gs` or when Drive folder contents must appear immediately,
+run `clearQefCache()` and then `warmQefSiteCache()` in the Apps Script editor.
 
 7. Run `clearQefCache()` and then `warmQefSiteCache()` in the Apps Script editor.
 8. Test:
@@ -32,7 +33,7 @@ Script editor.
 Expected response includes:
 
 ```json
-{ "ok": true, "cacheVersion": "2026-06-25-v1" }
+{ "ok": true, "cacheVersion": "2026-07-04-v1" }
 ```
 
 The response should not include `QEF_Photos`. If it still does, the deployed

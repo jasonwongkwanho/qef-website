@@ -7,7 +7,7 @@ window.QEF_SITE_CONFIG = {
   "siteSubtitle": "以真實情境連繫課程、職場與生活，讓學生在參與中建立能力與信心。",
   "planTitle": "創設實況學習場地（咖啡店），提升學生生涯規劃及職前培訓，強化獨立生活能力",
   "footerText": "QEF 計劃公開介紹網站",
-  "apiBaseUrl": "https://script.google.com/macros/s/AKfycbyUHXRA6cHe3j2qaPsjl5sz3W0lUyoemJST2eXeRK83Aj2wUaMS8nWH2UJwQTWmAvNh/exec",
+  "apiBaseUrl": "https://script.google.com/macros/s/AKfycbzng8BqwSLaprWIrAgzBy_kdsc3LBkzjzxM8Y_P51yYcEu8xi5ox_m3JffSUsHcstml/exec",
   "apiMode": "jsonp",
   "apiTimeoutMs": 90000,
   "useSampleDataWhenApiMissing": true,
@@ -328,7 +328,7 @@ window.QEF_SITE_CONFIG = {
       "id": "period",
       "label": "推行時期",
       "value": "09/2024 - 07/2026",
-      "detail": "按 QEF 計劃節錄資料建立",
+      "detail": "歷時 2 個學年",
       "order": 4,
       "published": true
     }
@@ -443,12 +443,57 @@ window.QEF_SITE_CONFIG = {
       "published": true
     },
     {
-      "id": "light-catering-cleaning-1rg5juD2Iaxh6sq6tXtPpWItfp8pHNNyA",
+      "id": "light-food-prep-1X1jQWGmtaD1D_eg_VPv2x45D-2ytkRFU",
+      "pageId": "light-food-prep",
+      "imageId": "1X1jQWGmtaD1D_eg_VPv2x45D-2ytkRFU",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1X1jQWGmtaD1D_eg_VPv2x45D-2ytkRFU&sz=w800",
+      "caption": "同學們認真地處理大蝦殼，一點也不馬虎！",
+      "order": 1012,
+      "published": true
+    },
+    {
+      "id": "light-food-prep-1Z-w3QOk5oos_Tjw7AQJ7ThVY7bdmNi8D",
+      "pageId": "light-food-prep",
+      "imageId": "1Z-w3QOk5oos_Tjw7AQJ7ThVY7bdmNi8D",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1Z-w3QOk5oos_Tjw7AQJ7ThVY7bdmNi8D&sz=w800",
+      "caption": "成功非僥倖，同學們透過堅持和努力，不斷練習拉花技術",
+      "order": 1013,
+      "published": true
+    },
+    {
+      "id": "light-catering-cleaning-10pPjgiLdWz6RlXq6O81nnGC2x2TN9hOw",
       "pageId": "light-catering-cleaning",
-      "imageId": "1rg5juD2Iaxh6sq6tXtPpWItfp8pHNNyA",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1rg5juD2Iaxh6sq6tXtPpWItfp8pHNNyA&sz=w800",
-      "caption": "餐飲接待及清潔_鈞 (4)",
+      "imageId": "10pPjgiLdWz6RlXq6O81nnGC2x2TN9hOw",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=10pPjgiLdWz6RlXq6O81nnGC2x2TN9hOw&sz=w800",
+      "caption": "學生招待來賓享用餐點",
       "order": 1000,
+      "published": true
+    },
+    {
+      "id": "light-catering-cleaning-10MdVjxYFyoOPrvPGyhCKlPQ31eHj7tIr",
+      "pageId": "light-catering-cleaning",
+      "imageId": "10MdVjxYFyoOPrvPGyhCKlPQ31eHj7tIr",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=10MdVjxYFyoOPrvPGyhCKlPQ31eHj7tIr&sz=w800",
+      "caption": "學生在接待場地準備招待來賓",
+      "order": 1001,
+      "published": true
+    },
+    {
+      "id": "light-catering-cleaning-1RGtpqGF5DABhdt1K2gjkAB9gc4B086oc",
+      "pageId": "light-catering-cleaning",
+      "imageId": "1RGtpqGF5DABhdt1K2gjkAB9gc4B086oc",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1RGtpqGF5DABhdt1K2gjkAB9gc4B086oc&sz=w800",
+      "caption": "學生協助接待時遞接食物",
+      "order": 1002,
+      "published": true
+    },
+    {
+      "id": "light-catering-cleaning-1W0T_11UC2FGUKgoMFvAKtlcjKuB3rsEd",
+      "pageId": "light-catering-cleaning",
+      "imageId": "1W0T_11UC2FGUKgoMFvAKtlcjKuB3rsEd",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1W0T_11UC2FGUKgoMFvAKtlcjKuB3rsEd&sz=w800",
+      "caption": "學生在水槽清洗餐具",
+      "order": 1003,
       "published": true
     },
     {
@@ -456,8 +501,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-catering-cleaning",
       "imageId": "1udM1OZPjfz_LW7lemPzAAVfGieTquOaz",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1udM1OZPjfz_LW7lemPzAAVfGieTquOaz&sz=w800",
-      "caption": "餐飲接待及清潔_鈞 (7)",
-      "order": 1001,
+      "caption": "學生按示範分類收拾餐具",
+      "order": 1004,
       "published": true
     },
     {
@@ -465,8 +510,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-catering-cleaning",
       "imageId": "1m7ixz7lOSrZ9uY-xlCB57EWOO53Svap_",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1m7ixz7lOSrZ9uY-xlCB57EWOO53Svap_&sz=w800",
-      "caption": "餐飲接待及清潔_鈞 (6)",
-      "order": 1002,
+      "caption": "學生在屏幕上選擇沙律餐具",
+      "order": 1005,
       "published": true
     },
     {
@@ -474,8 +519,17 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-catering-cleaning",
       "imageId": "1n4z9kkhA_NLByF9qVDnYdb0YvBy4NfEY",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1n4z9kkhA_NLByF9qVDnYdb0YvBy4NfEY&sz=w800",
-      "caption": "餐飲接待及清潔_鈞 (5)",
-      "order": 1003,
+      "caption": "學生回答用餐結束餐具擺放問題",
+      "order": 1006,
+      "published": true
+    },
+    {
+      "id": "light-catering-cleaning-1rg5juD2Iaxh6sq6tXtPpWItfp8pHNNyA",
+      "pageId": "light-catering-cleaning",
+      "imageId": "1rg5juD2Iaxh6sq6tXtPpWItfp8pHNNyA",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1rg5juD2Iaxh6sq6tXtPpWItfp8pHNNyA&sz=w800",
+      "caption": "學生觀看餐具分類教學",
+      "order": 1007,
       "published": true
     },
     {
@@ -483,8 +537,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-catering-cleaning",
       "imageId": "1c-JgHsgouuPGugENKvEszQnlqBpbEgug",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1c-JgHsgouuPGugENKvEszQnlqBpbEgug&sz=w800",
-      "caption": "餐飲接待及清潔_鈞 (3)",
-      "order": 1004,
+      "caption": "學生參考屏幕示範整理餐具",
+      "order": 1008,
       "published": true
     },
     {
@@ -492,8 +546,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-catering-cleaning",
       "imageId": "1MghLM0_eOp8ZqQy4D_yDpG5EWiN4YnHl",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1MghLM0_eOp8ZqQy4D_yDpG5EWiN4YnHl&sz=w800",
-      "caption": "餐飲接待及清潔_鈞 (2)",
-      "order": 1005,
+      "caption": "學生在課室練習餐桌擺位",
+      "order": 1009,
       "published": true
     },
     {
@@ -501,26 +555,35 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-catering-cleaning",
       "imageId": "114UnQW6VucAPJi5uxeOh1pCfbaD0URfX",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=114UnQW6VucAPJi5uxeOh1pCfbaD0URfX&sz=w800",
-      "caption": "餐飲接待及清潔_鈞 (1)",
-      "order": 1006,
+      "caption": "學生在課室練習擺放餐具",
+      "order": 1010,
       "published": true
     },
     {
-      "id": "light-shop-operation-1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ",
+      "id": "light-shop-operation-1vIq6XV3Y1Iq6HIBRLYeTehguOG4n_eo9",
       "pageId": "light-shop-operation",
-      "imageId": "1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ&sz=w800",
-      "caption": "IMG_1663",
+      "imageId": "1vIq6XV3Y1Iq6HIBRLYeTehguOG4n_eo9",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1vIq6XV3Y1Iq6HIBRLYeTehguOG4n_eo9&sz=w800",
+      "caption": "學生展示店鋪飲品及宣傳牌",
       "order": 1000,
       "published": true
     },
     {
-      "id": "light-shop-operation-1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ",
+      "id": "light-shop-operation-1FHZFZzSV81DY8R9yb-cNy-1Suo0TtcOd",
       "pageId": "light-shop-operation",
-      "imageId": "1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ&sz=w800",
-      "caption": "IMG_1664",
+      "imageId": "1FHZFZzSV81DY8R9yb-cNy-1Suo0TtcOd",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1FHZFZzSV81DY8R9yb-cNy-1Suo0TtcOd&sz=w800",
+      "caption": "學生補充冷櫃三文治商品",
       "order": 1001,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1BaSNZDARxcPpcHSIM8qu02rSSVCN2JBz",
+      "pageId": "light-shop-operation",
+      "imageId": "1BaSNZDARxcPpcHSIM8qu02rSSVCN2JBz",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1BaSNZDARxcPpcHSIM8qu02rSSVCN2JBz&sz=w800",
+      "caption": "學生展示店鋪食品套裝",
+      "order": 1002,
       "published": true
     },
     {
@@ -528,16 +591,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-shop-operation",
       "imageId": "1i-ViI2GePpWVp1oFMmMxw-Tjr49nZjJS",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1i-ViI2GePpWVp1oFMmMxw-Tjr49nZjJS&sz=w800",
-      "caption": "IMG_7088",
-      "order": 1002,
-      "published": true
-    },
-    {
-      "id": "light-shop-operation-1xzlCXj4Yc4FJptEV2ft2Q0V3BqW8C29Q",
-      "pageId": "light-shop-operation",
-      "imageId": "1xzlCXj4Yc4FJptEV2ft2Q0V3BqW8C29Q",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1xzlCXj4Yc4FJptEV2ft2Q0V3BqW8C29Q&sz=w800",
-      "caption": "IMG_7080",
+      "caption": "學生調整貨架飾品陳列",
       "order": 1003,
       "published": true
     },
@@ -546,7 +600,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-shop-operation",
       "imageId": "1DHsDgVVwEEtIO1dt0r0iPS5fwTALPBi9",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1DHsDgVVwEEtIO1dt0r0iPS5fwTALPBi9&sz=w800",
-      "caption": "IMG_7086",
+      "caption": "學生整理店鋪展示相架",
       "order": 1004,
       "published": true
     },
@@ -555,8 +609,17 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-shop-operation",
       "imageId": "19pZqjmT_M7WlCek4wNOCJzvtNSW-F7o9",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=19pZqjmT_M7WlCek4wNOCJzvtNSW-F7o9&sz=w800",
-      "caption": "IMG_7083",
+      "caption": "學生按清單擺放店鋪商品",
       "order": 1005,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1xzlCXj4Yc4FJptEV2ft2Q0V3BqW8C29Q",
+      "pageId": "light-shop-operation",
+      "imageId": "1xzlCXj4Yc4FJptEV2ft2Q0V3BqW8C29Q",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1xzlCXj4Yc4FJptEV2ft2Q0V3BqW8C29Q&sz=w800",
+      "caption": "學生分工整理店鋪商品",
+      "order": 1006,
       "published": true
     },
     {
@@ -564,8 +627,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-shop-operation",
       "imageId": "1wELsP8dKK9ngwRcogolkms9H00id6Kxa",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1wELsP8dKK9ngwRcogolkms9H00id6Kxa&sz=w800",
-      "caption": "IMG_7079",
-      "order": 1006,
+      "caption": "學生整理店鋪貨架陳列",
+      "order": 1007,
       "published": true
     },
     {
@@ -573,8 +636,35 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-shop-operation",
       "imageId": "1IUjI5W2vHLhu16iKrapPrljfZdoBnuZZ",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1IUjI5W2vHLhu16iKrapPrljfZdoBnuZZ&sz=w800",
-      "caption": "IMG_6087",
-      "order": 1007,
+      "caption": "學生向來賓介紹商品陳列",
+      "order": 1008,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ",
+      "pageId": "light-shop-operation",
+      "imageId": "1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ&sz=w800",
+      "caption": "學生在店鋪向來賓介紹服務",
+      "order": 1009,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ",
+      "pageId": "light-shop-operation",
+      "imageId": "1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ&sz=w800",
+      "caption": "學生在店鋪接待來賓查詢",
+      "order": 1010,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1c6U4aR5WRSGamDJg9bhwT7f6ugXd8wCy",
+      "pageId": "light-shop-operation",
+      "imageId": "1c6U4aR5WRSGamDJg9bhwT7f6ugXd8wCy",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1c6U4aR5WRSGamDJg9bhwT7f6ugXd8wCy&sz=w800",
+      "caption": "學生進行店鋪外送及收款訓練",
+      "order": 1011,
       "published": true
     },
     {
@@ -956,6 +1046,42 @@ window.QEF_SITE_CONFIG = {
       "published": true
     },
     {
+      "id": "moderate-planting-1BNE2PlbFnC0ILAXMiY3t7D35NnYoiDx7",
+      "pageId": "moderate-planting",
+      "imageId": "1BNE2PlbFnC0ILAXMiY3t7D35NnYoiDx7",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1BNE2PlbFnC0ILAXMiY3t7D35NnYoiDx7&sz=w800",
+      "caption": "IMG_4349",
+      "order": 1012,
+      "published": true
+    },
+    {
+      "id": "moderate-planting-1D98Vy4qqfFC2HHYIy3VOYwZGQnBgt20z",
+      "pageId": "moderate-planting",
+      "imageId": "1D98Vy4qqfFC2HHYIy3VOYwZGQnBgt20z",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1D98Vy4qqfFC2HHYIy3VOYwZGQnBgt20z&sz=w800",
+      "caption": "IMG_4348",
+      "order": 1013,
+      "published": true
+    },
+    {
+      "id": "moderate-planting-1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB",
+      "pageId": "moderate-planting",
+      "imageId": "1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB&sz=w800",
+      "caption": "IMG_5901",
+      "order": 1014,
+      "published": true
+    },
+    {
+      "id": "moderate-planting-1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO",
+      "pageId": "moderate-planting",
+      "imageId": "1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO&sz=w800",
+      "caption": "IMG_5898",
+      "order": 1015,
+      "published": true
+    },
+    {
       "id": "moderate-art-development-14fnL_Kq5mhZEa3BQD2-nQykkwAeRWirr",
       "pageId": "moderate-art-development",
       "imageId": "14fnL_Kq5mhZEa3BQD2-nQykkwAeRWirr",
@@ -1160,6 +1286,15 @@ window.QEF_SITE_CONFIG = {
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1JsqYa1UwxiZPIMVROoH0whTHNvB-jz4c&sz=w800",
       "caption": "學生於個人成長課學習製作三文治 (3)",
       "order": 1011,
+      "published": true
+    },
+    {
+      "id": "moderate-independent-living-1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen",
+      "pageId": "moderate-independent-living",
+      "imageId": "1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen&sz=w800",
+      "caption": "學生於個人成長課學習製作三文治",
+      "order": 1012,
       "published": true
     },
     {

@@ -41,10 +41,9 @@ The frontend renders sample content immediately while the live Apps Script paylo
 
 `apps-script/Code.gs` uses Apps Script `CacheService` for:
 
-- full `site` payload cache, about 10 minutes;
-- per-page folder photo metadata cache, up to 6 hours.
+- full `site` payload cache, about 5 minutes.
 
-Use `clearQefCache()` or `warmQefSiteCache()` in the Apps Script editor after redeploying the backend or changing Drive folder contents.
+Folder photos are rescanned from Drive whenever the `site` payload cache is rebuilt, so newly added photos normally appear after the short cache expires. Use `clearQefCache()` or `warmQefSiteCache()` in the Apps Script editor after redeploying the backend or when Drive folder changes must appear immediately.
 
 ## Security
 

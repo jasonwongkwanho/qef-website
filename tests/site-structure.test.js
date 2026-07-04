@@ -16,6 +16,20 @@ function extractFunction(source, name) {
   return source.slice(start, next === -1 ? source.length : next);
 }
 
+function extractFunctionBefore(source, name, nextName) {
+  const start = source.indexOf(`function ${name}`);
+  assert.notStrictEqual(start, -1, `${name} should exist`);
+  const next = source.indexOf(`\nfunction ${nextName}`, start + 1);
+  assert.notStrictEqual(next, -1, `${nextName} should follow ${name}`);
+  return source.slice(start, next);
+}
+
+function extractNumericConstant(source, name) {
+  const match = source.match(new RegExp(`const ${name} = (\\d+);`));
+  assert.ok(match, `${name} should be a numeric constant`);
+  return Number(match[1]);
+}
+
 function loadConfig() {
   const sandbox = { window: {} };
   vm.createContext(sandbox);
@@ -37,6 +51,7 @@ const renderPhotoTileFunction = extractFunction(app, "renderPhotoTile");
 const renderGalleryPhotoFunction = extractFunction(app, "renderGalleryPhoto");
 const makeThumbnailUrlFunction = extractFunction(codeGs, "makeThumbnailUrl_");
 const buildPhotoCaptionFunction = extractFunction(codeGs, "buildPhotoCaption_");
+const getCachedFolderPhotoFilesFunction = extractFunctionBefore(codeGs, "getCachedFolderPhotoFiles_", "buildFolderPhotoCacheKey_");
 const liveProbe = read("scripts/probe-live-site.js");
 const snapshotScriptPath = path.join(root, "scripts", "snapshot-qef-defaults.js");
 const snapshotScript = fs.existsSync(snapshotScriptPath) ? read("scripts/snapshot-qef-defaults.js") : "";
@@ -255,6 +270,13 @@ assert.match(codeGs, /CacheService\.getScriptCache/, "Apps Script should cache e
 assert.match(codeGs, /getCachedSitePayload_/, "Apps Script should cache the site API response");
 assert.match(codeGs, /clearQefCache/, "Apps Script should expose a manual cache clear helper");
 assert.match(codeGs, /warmQefSiteCache/, "Apps Script should expose a manual cache warm helper");
+assert.ok(extractNumericConstant(codeGs, "SITE_CACHE_TTL_SECONDS") <= 300, "site cache should refresh Drive photos within a few minutes");
+assert.ok(extractNumericConstant(codeGs, "MAX_FOLDER_PHOTOS_PER_PAGE") >= 50, "course galleries should not silently stop at 12 photos");
+assert.doesNotMatch(
+  getCachedFolderPhotoFilesFunction,
+  /getCachedJson_|putCachedJson_|FOLDER_PHOTO_CACHE_TTL_SECONDS/,
+  "folder photo scans should not use a long-lived per-folder cache that hides newly added Drive photos"
+);
 assert.match(codeGs, /DEFAULT_THUMBNAIL_SIZE = 800/, "Apps Script should return moderate default thumbnail URLs for folder photos");
 assert.match(makeThumbnailUrlFunction, /function makeThumbnailUrl_\(imageId, size\)/, "Apps Script thumbnail helper should accept an explicit size");
 assert.match(makeThumbnailUrlFunction, /Number\(size \|\| DEFAULT_THUMBNAIL_SIZE\)/, "Apps Script thumbnail helper should default to the configured thumbnail size");

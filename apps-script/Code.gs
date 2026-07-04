@@ -17,13 +17,12 @@ const NAV_CATEGORY_ORDER = [
   '社區連繫',
   '預期成效'
 ];
-const MAX_FOLDER_PHOTOS_PER_PAGE = 12;
+const MAX_FOLDER_PHOTOS_PER_PAGE = 60;
 const MAX_FOLDER_PHOTO_DEPTH = 3;
 const DEFAULT_THUMBNAIL_SIZE = 800;
-const CACHE_VERSION = '2026-06-28-v1';
+const CACHE_VERSION = '2026-07-04-v1';
 const SITE_CACHE_KEY = 'qef-site:' + CACHE_VERSION;
-const SITE_CACHE_TTL_SECONDS = 600;
-const FOLDER_PHOTO_CACHE_TTL_SECONDS = 21600;
+const SITE_CACHE_TTL_SECONDS = 300;
 
 function doGet(e) {
   const params = (e && e.parameter) || {};
@@ -204,22 +203,15 @@ function collectFolderPhotos_(pages) {
 }
 
 function getCachedFolderPhotoFiles_(page) {
-  const cacheKey = buildFolderPhotoCacheKey_(page);
-  const cached = getCachedJson_(cacheKey);
-  if (Array.isArray(cached)) return cached;
-
   const folder = DriveApp.getFolderById(page.folderId);
   const imageFiles = collectImagesFromFolder_(folder, 0, MAX_FOLDER_PHOTO_DEPTH, MAX_FOLDER_PHOTOS_PER_PAGE);
-  const photoFiles = imageFiles.map(function (file, index) {
+  return imageFiles.map(function (file, index) {
     return {
       imageId: file.getId(),
       fileName: file.getName(),
       order: 1000 + index
     };
   });
-
-  putCachedJson_(cacheKey, photoFiles, FOLDER_PHOTO_CACHE_TTL_SECONDS);
-  return photoFiles;
 }
 
 function buildFolderPhotoCacheKey_(page) {
