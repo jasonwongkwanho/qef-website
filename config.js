@@ -188,8 +188,8 @@ window.QEF_SITE_CONFIG = {
       "category": "課程內容",
       "order": 25,
       "date": "",
-      "summary": "學生透過社區參觀及生活任務，連繫校內學習與真實生活。",
-      "body": "學生透過社區參觀及生活任務，連繫校內學習與真實生活。\n\n課程引導學生觀察社區設施、認識服務流程及練習外出禮儀，提升生活適應、社交溝通和安全意識。",
+      "summary": "學生透過社區參觀、生活任務及工作體驗等，連繫校內學習與真實生活。",
+      "body": "學生透過社區參觀、生活任務及工作體驗等，連繫校內學習與真實生活。\n\n課程引導學生觀察社區設施、認識服務流程及練習外出禮儀，提升生活適應、社交溝通和安全意識。",
       "imageId": "",
       "folderId": "1U_T0preTA6HO_nDOfl0DT-H4H8HF-009",
       "published": true
@@ -201,8 +201,8 @@ window.QEF_SITE_CONFIG = {
       "category": "課程內容",
       "order": 26,
       "date": "",
-      "summary": "學生在校內外工作任務中嘗試不同職務，理解工作要求。",
-      "body": "學生在校內外工作任務中嘗試不同職務，理解工作要求。\n\n工作體驗讓學生把課堂所學應用於真實或模擬工作場景，累積任務完成、溝通合作及自我反思經驗。",
+      "summary": "學生透過實作體驗多元工藝及生活製品製作，培養基本職場技能，發掘個人興趣與潛能，為未來多元工作機會建立基礎。",
+      "body": "學生透過實作體驗多元工藝及生活製品製作，培養基本職場技能，發掘個人興趣與潛能，為未來多元工作機會建立基礎。\n\n工作體驗讓學生把課堂所學應用於真實或模擬工作場景，累積任務完成、溝通合作及自我反思經驗。",
       "imageId": "",
       "folderId": "1ojhiKlfHiULes0ZhlEgLhhOwX9eTFtdS",
       "published": true
@@ -229,7 +229,7 @@ window.QEF_SITE_CONFIG = {
       "date": "",
       "summary": "學生透過種植活動學習照顧植物、觀察成長及維持環境。",
       "body": "學生透過種植活動學習照顧植物、觀察成長及維持環境。\n\n種植訓練提供重複而具生活感的任務，學生在澆水、整理、觀察及簡單記錄中培養責任感和持續參與。",
-      "imageId": "",
+      "imageId": "https://drive.google.com/open?id=1a7i3wb-PikERII9OJQya9Z2aKI8FU1Id&usp=drive_fs",
       "folderId": "1dSaoaYReyetCVUaVt4aMw9ZjURC7t7s1",
       "published": true
     },
@@ -389,21 +389,12 @@ window.QEF_SITE_CONFIG = {
       "published": true
     },
     {
-      "id": "light-food-prep-1oo0QFcwsVSJrbBUD0sToObjghBwZQ1Be",
-      "pageId": "light-food-prep",
-      "imageId": "1oo0QFcwsVSJrbBUD0sToObjghBwZQ1Be",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1oo0QFcwsVSJrbBUD0sToObjghBwZQ1Be&sz=w800",
-      "caption": "同學們熱烈地招待到尚cafe參觀的嘉賓。",
-      "order": 1006,
-      "published": true
-    },
-    {
       "id": "light-food-prep-1km3b2CJIOiMrK7yZC1hBpfcQReuwmycI",
       "pageId": "light-food-prep",
       "imageId": "1km3b2CJIOiMrK7yZC1hBpfcQReuwmycI",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1km3b2CJIOiMrK7yZC1hBpfcQReuwmycI&sz=w800",
       "caption": "同學們專心地調製香橙tonic咖啡。",
-      "order": 1007,
+      "order": 1006,
       "published": true
     },
     {
@@ -412,7 +403,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1icObF7BFseBwN79oqI8NWS98wLmOslVO",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1icObF7BFseBwN79oqI8NWS98wLmOslVO&sz=w800",
       "caption": "令人無法抗拒的早餐組合。",
-      "order": 1008,
+      "order": 1007,
       "published": true
     },
     {
@@ -421,7 +412,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "16UbFHfVfntiC5keUH9OL_Sload1xAbm-",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=16UbFHfVfntiC5keUH9OL_Sload1xAbm-&sz=w800",
       "caption": "當熱呼呼的燒賣遇上冰冷的香橙tonic咖啡，味道會是如何？",
-      "order": 1009,
+      "order": 1008,
       "published": true
     },
     {
@@ -430,7 +421,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1uougf220pvfmcb64iPwq4xSUWv70mk0k",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1uougf220pvfmcb64iPwq4xSUWv70mk0k&sz=w800",
       "caption": "辛勤的同學們，一早已為大家預備熱呼呼的燒賣！",
-      "order": 1010,
+      "order": 1009,
       "published": true
     },
     {
@@ -439,7 +430,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1ZWNyzvAPI2dTXWDkDiLOyiTsQDruJSJ0",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1ZWNyzvAPI2dTXWDkDiLOyiTsQDruJSJ0&sz=w800",
       "caption": "專業咖啡師為大家提供優質燕麥拉花咖啡！",
-      "order": 1011,
+      "order": 1010,
       "published": true
     },
     {
@@ -448,7 +439,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1X1jQWGmtaD1D_eg_VPv2x45D-2ytkRFU",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1X1jQWGmtaD1D_eg_VPv2x45D-2ytkRFU&sz=w800",
       "caption": "同學們認真地處理大蝦殼，一點也不馬虎！",
-      "order": 1012,
+      "order": 1011,
       "published": true
     },
     {
@@ -457,7 +448,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1Z-w3QOk5oos_Tjw7AQJ7ThVY7bdmNi8D",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1Z-w3QOk5oos_Tjw7AQJ7ThVY7bdmNi8D&sz=w800",
       "caption": "成功非僥倖，同學們透過堅持和努力，不斷練習拉花技術",
-      "order": 1013,
+      "order": 1012,
       "published": true
     },
     {
@@ -560,12 +551,57 @@ window.QEF_SITE_CONFIG = {
       "published": true
     },
     {
+      "id": "light-catering-cleaning-1oo0QFcwsVSJrbBUD0sToObjghBwZQ1Be",
+      "pageId": "light-catering-cleaning",
+      "imageId": "1oo0QFcwsVSJrbBUD0sToObjghBwZQ1Be",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1oo0QFcwsVSJrbBUD0sToObjghBwZQ1Be&sz=w800",
+      "caption": "同學們熱烈地招待到尚cafe參觀的嘉賓。",
+      "order": 1011,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1VeoftyRNgnFzRt4XT-2pr-5Zpl1wI7JV",
+      "pageId": "light-shop-operation",
+      "imageId": "1VeoftyRNgnFzRt4XT-2pr-5Zpl1wI7JV",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1VeoftyRNgnFzRt4XT-2pr-5Zpl1wI7JV&sz=w800",
+      "caption": "學生接待來賓介紹食品攤位",
+      "order": 1000,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1e93ZWwHKgvDChoiFVfstRz9gohm3BZq3",
+      "pageId": "light-shop-operation",
+      "imageId": "1e93ZWwHKgvDChoiFVfstRz9gohm3BZq3",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1e93ZWwHKgvDChoiFVfstRz9gohm3BZq3&sz=w800",
+      "caption": "學生向來賓介紹禮盒產品",
+      "order": 1001,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1f2HZTNXCaNZoqhHYeO6DQNIWnClDYDl4",
+      "pageId": "light-shop-operation",
+      "imageId": "1f2HZTNXCaNZoqhHYeO6DQNIWnClDYDl4",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1f2HZTNXCaNZoqhHYeO6DQNIWnClDYDl4&sz=w800",
+      "caption": "學生展示義賣食品及禮盒",
+      "order": 1002,
+      "published": true
+    },
+    {
+      "id": "light-shop-operation-1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ",
+      "pageId": "light-shop-operation",
+      "imageId": "1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ&sz=w800",
+      "caption": "學生在店鋪向來賓介紹商品",
+      "order": 1003,
+      "published": true
+    },
+    {
       "id": "light-shop-operation-1vIq6XV3Y1Iq6HIBRLYeTehguOG4n_eo9",
       "pageId": "light-shop-operation",
       "imageId": "1vIq6XV3Y1Iq6HIBRLYeTehguOG4n_eo9",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1vIq6XV3Y1Iq6HIBRLYeTehguOG4n_eo9&sz=w800",
       "caption": "學生展示店鋪飲品及宣傳牌",
-      "order": 1000,
+      "order": 1004,
       "published": true
     },
     {
@@ -574,7 +610,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1FHZFZzSV81DY8R9yb-cNy-1Suo0TtcOd",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1FHZFZzSV81DY8R9yb-cNy-1Suo0TtcOd&sz=w800",
       "caption": "學生補充冷櫃三文治商品",
-      "order": 1001,
+      "order": 1005,
       "published": true
     },
     {
@@ -583,7 +619,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1BaSNZDARxcPpcHSIM8qu02rSSVCN2JBz",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1BaSNZDARxcPpcHSIM8qu02rSSVCN2JBz&sz=w800",
       "caption": "學生展示店鋪食品套裝",
-      "order": 1002,
+      "order": 1006,
       "published": true
     },
     {
@@ -592,7 +628,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1i-ViI2GePpWVp1oFMmMxw-Tjr49nZjJS",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1i-ViI2GePpWVp1oFMmMxw-Tjr49nZjJS&sz=w800",
       "caption": "學生調整貨架飾品陳列",
-      "order": 1003,
+      "order": 1007,
       "published": true
     },
     {
@@ -601,7 +637,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1DHsDgVVwEEtIO1dt0r0iPS5fwTALPBi9",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1DHsDgVVwEEtIO1dt0r0iPS5fwTALPBi9&sz=w800",
       "caption": "學生整理店鋪展示相架",
-      "order": 1004,
+      "order": 1008,
       "published": true
     },
     {
@@ -610,7 +646,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "19pZqjmT_M7WlCek4wNOCJzvtNSW-F7o9",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=19pZqjmT_M7WlCek4wNOCJzvtNSW-F7o9&sz=w800",
       "caption": "學生按清單擺放店鋪商品",
-      "order": 1005,
+      "order": 1009,
       "published": true
     },
     {
@@ -619,7 +655,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1xzlCXj4Yc4FJptEV2ft2Q0V3BqW8C29Q",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1xzlCXj4Yc4FJptEV2ft2Q0V3BqW8C29Q&sz=w800",
       "caption": "學生分工整理店鋪商品",
-      "order": 1006,
+      "order": 1010,
       "published": true
     },
     {
@@ -628,7 +664,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1wELsP8dKK9ngwRcogolkms9H00id6Kxa",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1wELsP8dKK9ngwRcogolkms9H00id6Kxa&sz=w800",
       "caption": "學生整理店鋪貨架陳列",
-      "order": 1007,
+      "order": 1011,
       "published": true
     },
     {
@@ -637,25 +673,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1IUjI5W2vHLhu16iKrapPrljfZdoBnuZZ",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1IUjI5W2vHLhu16iKrapPrljfZdoBnuZZ&sz=w800",
       "caption": "學生向來賓介紹商品陳列",
-      "order": 1008,
-      "published": true
-    },
-    {
-      "id": "light-shop-operation-1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ",
-      "pageId": "light-shop-operation",
-      "imageId": "1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1YMF6H7WkRr5EdPDp-G1wEdcAkpQwGYdJ&sz=w800",
-      "caption": "學生在店鋪向來賓介紹服務",
-      "order": 1009,
-      "published": true
-    },
-    {
-      "id": "light-shop-operation-1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ",
-      "pageId": "light-shop-operation",
-      "imageId": "1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1QyatUCD3iFJdfojm_l_zasEjRN2g0MiQ&sz=w800",
-      "caption": "學生在店鋪接待來賓查詢",
-      "order": 1010,
+      "order": 1012,
       "published": true
     },
     {
@@ -664,16 +682,7 @@ window.QEF_SITE_CONFIG = {
       "imageId": "1c6U4aR5WRSGamDJg9bhwT7f6ugXd8wCy",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1c6U4aR5WRSGamDJg9bhwT7f6ugXd8wCy&sz=w800",
       "caption": "學生進行店鋪外送及收款訓練",
-      "order": 1011,
-      "published": true
-    },
-    {
-      "id": "light-workplace-life-1ZJaF70xgDIv3PUSixW7Ja3m7EOWVMqKn",
-      "pageId": "light-workplace-life",
-      "imageId": "1ZJaF70xgDIv3PUSixW7Ja3m7EOWVMqKn",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1ZJaF70xgDIv3PUSixW7Ja3m7EOWVMqKn&sz=w800",
-      "caption": "職場生活_鈞 (4)",
-      "order": 1000,
+      "order": 1013,
       "published": true
     },
     {
@@ -681,7 +690,16 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-workplace-life",
       "imageId": "1xaP4qcqa0b0liVJI55FNWj-PsyglOf7x",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1xaP4qcqa0b0liVJI55FNWj-PsyglOf7x&sz=w800",
-      "caption": "職場生活_鈞 (5)",
+      "caption": "學生講解職位要求重點",
+      "order": 1000,
+      "published": true
+    },
+    {
+      "id": "light-workplace-life-1ZJaF70xgDIv3PUSixW7Ja3m7EOWVMqKn",
+      "pageId": "light-workplace-life",
+      "imageId": "1ZJaF70xgDIv3PUSixW7Ja3m7EOWVMqKn",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1ZJaF70xgDIv3PUSixW7Ja3m7EOWVMqKn&sz=w800",
+      "caption": "學生圈選工作要求重點",
       "order": 1001,
       "published": true
     },
@@ -690,7 +708,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-workplace-life",
       "imageId": "10QBfuYZBPU1a6Epc85rcgSB6nLwYMt9E",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=10QBfuYZBPU1a6Epc85rcgSB6nLwYMt9E&sz=w800",
-      "caption": "職場生活_鈞 (3)",
+      "caption": "學生瀏覽職業資訊網頁",
       "order": 1002,
       "published": true
     },
@@ -699,7 +717,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-workplace-life",
       "imageId": "1tE8nbsesRMUsEewP2h2lnLdNWg4C0KOW",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1tE8nbsesRMUsEewP2h2lnLdNWg4C0KOW&sz=w800",
-      "caption": "職場生活_鈞 (2)",
+      "caption": "學生認識升學及工作技能發展",
       "order": 1003,
       "published": true
     },
@@ -708,17 +726,35 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-workplace-life",
       "imageId": "1Y2WQ93PDjpKMlBwe0Qed_mnt8qhDFXwy",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1Y2WQ93PDjpKMlBwe0Qed_mnt8qhDFXwy&sz=w800",
-      "caption": "職場生活_鈞 (1)",
+      "caption": "學生分析工作是否合適的活動頁",
       "order": 1004,
       "published": true
     },
     {
-      "id": "light-art-development-1HxpqnSEmcsdpswz2PSewLsFKJQywq_7L",
+      "id": "light-art-development-12ERhCOkBqnGgydUHNsaY7jIhI3bJF7JT",
       "pageId": "light-art-development",
-      "imageId": "1HxpqnSEmcsdpswz2PSewLsFKJQywq_7L",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1HxpqnSEmcsdpswz2PSewLsFKJQywq_7L&sz=w800",
-      "caption": "IMG_8278",
+      "imageId": "12ERhCOkBqnGgydUHNsaY7jIhI3bJF7JT",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=12ERhCOkBqnGgydUHNsaY7jIhI3bJF7JT&sz=w800",
+      "caption": "學生進行染色藝術創作",
       "order": 1000,
+      "published": true
+    },
+    {
+      "id": "light-art-development-1VpxtKgvt6N_cFUKvnT_0ICSgaEJM-RQX",
+      "pageId": "light-art-development",
+      "imageId": "1VpxtKgvt6N_cFUKvnT_0ICSgaEJM-RQX",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1VpxtKgvt6N_cFUKvnT_0ICSgaEJM-RQX&sz=w800",
+      "caption": "學生合作製作手工掛飾",
+      "order": 1001,
+      "published": true
+    },
+    {
+      "id": "light-art-development-1VbfyjnEcRbvrbp3vdFh1R6jyO9L5lhQe",
+      "pageId": "light-art-development",
+      "imageId": "1VbfyjnEcRbvrbp3vdFh1R6jyO9L5lhQe",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1VbfyjnEcRbvrbp3vdFh1R6jyO9L5lhQe&sz=w800",
+      "caption": "學生剪貼圖案設計作品",
+      "order": 1002,
       "published": true
     },
     {
@@ -726,8 +762,26 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-art-development",
       "imageId": "1hvDBpFsYwJ8t6ou0p-e7rR5xi0D9TXZe",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1hvDBpFsYwJ8t6ou0p-e7rR5xi0D9TXZe&sz=w800",
-      "caption": "IMG_8281",
-      "order": 1001,
+      "caption": "學生介紹紅色立體手工作品",
+      "order": 1003,
+      "published": true
+    },
+    {
+      "id": "light-art-development-1HxpqnSEmcsdpswz2PSewLsFKJQywq_7L",
+      "pageId": "light-art-development",
+      "imageId": "1HxpqnSEmcsdpswz2PSewLsFKJQywq_7L",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1HxpqnSEmcsdpswz2PSewLsFKJQywq_7L&sz=w800",
+      "caption": "學生向來賓展示藝術作品",
+      "order": 1004,
+      "published": true
+    },
+    {
+      "id": "light-art-development-1YnRoUI-33UaSf_xhXpdXtHMiEk2WyKhj",
+      "pageId": "light-art-development",
+      "imageId": "1YnRoUI-33UaSf_xhXpdXtHMiEk2WyKhj",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1YnRoUI-33UaSf_xhXpdXtHMiEk2WyKhj&sz=w800",
+      "caption": "學生使用熱熔膠製作手工",
+      "order": 1005,
       "published": true
     },
     {
@@ -798,7 +852,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-work-experience",
       "imageId": "1kIjPPmcctIKDXKJRRop2MLxLpuhkilYl",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1kIjPPmcctIKDXKJRRop2MLxLpuhkilYl&sz=w800",
-      "caption": "共融市集@愉景新城_學生向外界推廣自己設計的產品",
+      "caption": "學生於共融市集展示自家設計產品",
       "order": 1004,
       "published": true
     },
@@ -807,7 +861,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-work-experience",
       "imageId": "1tycn5HO_Xgr4UtxyVM_WnxrjB4BY3Mvd",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1tycn5HO_Xgr4UtxyVM_WnxrjB4BY3Mvd&sz=w800",
-      "caption": "DSC01000",
+      "caption": "學生向來賓介紹共融市集產品",
       "order": 1005,
       "published": true
     },
@@ -816,7 +870,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-work-experience",
       "imageId": "1jZmBSLRu0-RmjtwjiU3KnbeNLcZQi89_",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1jZmBSLRu0-RmjtwjiU3KnbeNLcZQi89_&sz=w800",
-      "caption": "第四屆潮州節@會展，學生們義賣自家製產品，學習管理攤位及招待客人，",
+      "caption": "學生於潮州節攤位前合照",
       "order": 1006,
       "published": true
     },
@@ -825,7 +879,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-work-experience",
       "imageId": "10PycSL_zoUDVYG5Mc7ee-HNteL_TNtkL",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=10PycSL_zoUDVYG5Mc7ee-HNteL_TNtkL&sz=w800",
-      "caption": "IMG_5154",
+      "caption": "學生準備潮州節攤位義賣產品",
       "order": 1007,
       "published": true
     },
@@ -834,7 +888,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "light-work-experience",
       "imageId": "1l8VZXj_ifidjErEB2gJLRbWnDPmQPdNv",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1l8VZXj_ifidjErEB2gJLRbWnDPmQPdNv&sz=w800",
-      "caption": "IMG_5092",
+      "caption": "學生整理潮州節義賣攤位貨品",
       "order": 1008,
       "published": true
     },
@@ -938,29 +992,29 @@ window.QEF_SITE_CONFIG = {
       "published": true
     },
     {
-      "id": "moderate-planting-1a7i3wb-PikERII9OJQya9Z2aKI8FU1Id",
+      "id": "moderate-planting-1dXlVvswg7baonRq9ef7Sc8Cei7_tlSis",
       "pageId": "moderate-planting",
-      "imageId": "1a7i3wb-PikERII9OJQya9Z2aKI8FU1Id",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1a7i3wb-PikERII9OJQya9Z2aKI8FU1Id&sz=w800",
-      "caption": "尚cafe裝飾植物 (2)",
+      "imageId": "1dXlVvswg7baonRq9ef7Sc8Cei7_tlSis",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1dXlVvswg7baonRq9ef7Sc8Cei7_tlSis&sz=w800",
+      "caption": "學生展示盛開的食用花盆栽",
       "order": 1000,
       "published": true
     },
     {
-      "id": "moderate-planting-1wpT9cDsdVSL3AtvNr_Cv6KJkFAOaIplE",
+      "id": "moderate-planting-15QQaWF_WDQlOu0RHAMaafNhwnOVJP9Qg",
       "pageId": "moderate-planting",
-      "imageId": "1wpT9cDsdVSL3AtvNr_Cv6KJkFAOaIplE",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1wpT9cDsdVSL3AtvNr_Cv6KJkFAOaIplE&sz=w800",
-      "caption": "尚cafe裝飾植物",
+      "imageId": "15QQaWF_WDQlOu0RHAMaafNhwnOVJP9Qg",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=15QQaWF_WDQlOu0RHAMaafNhwnOVJP9Qg&sz=w800",
+      "caption": "學生展示養護中的食用花",
       "order": 1001,
       "published": true
     },
     {
-      "id": "moderate-planting-1KvjS-jC_YYLKJ6vosVrFsI4dN_DHtZpY",
+      "id": "moderate-planting-1Hv2BJgelAjqhDb4YSXwVylmxWG1ra5o3",
       "pageId": "moderate-planting",
-      "imageId": "1KvjS-jC_YYLKJ6vosVrFsI4dN_DHtZpY",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1KvjS-jC_YYLKJ6vosVrFsI4dN_DHtZpY&sz=w800",
-      "caption": "種植成果 (2)",
+      "imageId": "1Hv2BJgelAjqhDb4YSXwVylmxWG1ra5o3",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1Hv2BJgelAjqhDb4YSXwVylmxWG1ra5o3&sz=w800",
+      "caption": "學生為食用花盆栽添泥",
       "order": 1002,
       "published": true
     },
@@ -969,44 +1023,17 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-planting",
       "imageId": "1LMktGBbVejx0YMxcphAyTlW7IbVqk-x2",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1LMktGBbVejx0YMxcphAyTlW7IbVqk-x2&sz=w800",
-      "caption": "種植成果",
+      "caption": "學生展示天台食用花盆栽",
       "order": 1003,
       "published": true
     },
     {
-      "id": "moderate-planting-15QQaWF_WDQlOu0RHAMaafNhwnOVJP9Qg",
+      "id": "moderate-planting-1KvjS-jC_YYLKJ6vosVrFsI4dN_DHtZpY",
       "pageId": "moderate-planting",
-      "imageId": "15QQaWF_WDQlOu0RHAMaafNhwnOVJP9Qg",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=15QQaWF_WDQlOu0RHAMaafNhwnOVJP9Qg&sz=w800",
-      "caption": "養護食用花 (2)",
+      "imageId": "1KvjS-jC_YYLKJ6vosVrFsI4dN_DHtZpY",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1KvjS-jC_YYLKJ6vosVrFsI4dN_DHtZpY&sz=w800",
+      "caption": "學生展示食用花種植成果",
       "order": 1004,
-      "published": true
-    },
-    {
-      "id": "moderate-planting-1dXlVvswg7baonRq9ef7Sc8Cei7_tlSis",
-      "pageId": "moderate-planting",
-      "imageId": "1dXlVvswg7baonRq9ef7Sc8Cei7_tlSis",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1dXlVvswg7baonRq9ef7Sc8Cei7_tlSis&sz=w800",
-      "caption": "養護食用花",
-      "order": 1005,
-      "published": true
-    },
-    {
-      "id": "moderate-planting-1Hv2BJgelAjqhDb4YSXwVylmxWG1ra5o3",
-      "pageId": "moderate-planting",
-      "imageId": "1Hv2BJgelAjqhDb4YSXwVylmxWG1ra5o3",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1Hv2BJgelAjqhDb4YSXwVylmxWG1ra5o3&sz=w800",
-      "caption": "種植食用花 (2)",
-      "order": 1006,
-      "published": true
-    },
-    {
-      "id": "moderate-planting-1GxqMROUqswJcKTchl3YdWOHjjvEUvR-B",
-      "pageId": "moderate-planting",
-      "imageId": "1GxqMROUqswJcKTchl3YdWOHjjvEUvR-B",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1GxqMROUqswJcKTchl3YdWOHjjvEUvR-B&sz=w800",
-      "caption": "採收食用花 (2)",
-      "order": 1007,
       "published": true
     },
     {
@@ -1014,34 +1041,61 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-planting",
       "imageId": "1sSObT7jIj8RJpOgBtir3GdVe5hVcw0HC",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1sSObT7jIj8RJpOgBtir3GdVe5hVcw0HC&sz=w800",
-      "caption": "採收食用花",
+      "caption": "學生採收紫色食用花",
+      "order": 1005,
+      "published": true
+    },
+    {
+      "id": "moderate-planting-1GxqMROUqswJcKTchl3YdWOHjjvEUvR-B",
+      "pageId": "moderate-planting",
+      "imageId": "1GxqMROUqswJcKTchl3YdWOHjjvEUvR-B",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1GxqMROUqswJcKTchl3YdWOHjjvEUvR-B&sz=w800",
+      "caption": "學生採摘盆栽食用花",
+      "order": 1006,
+      "published": true
+    },
+    {
+      "id": "moderate-planting-1wpT9cDsdVSL3AtvNr_Cv6KJkFAOaIplE",
+      "pageId": "moderate-planting",
+      "imageId": "1wpT9cDsdVSL3AtvNr_Cv6KJkFAOaIplE",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1wpT9cDsdVSL3AtvNr_Cv6KJkFAOaIplE&sz=w800",
+      "caption": "學生於尚Cafe展示大型葉片盆栽",
+      "order": 1007,
+      "published": true
+    },
+    {
+      "id": "moderate-planting-1a7i3wb-PikERII9OJQya9Z2aKI8FU1Id",
+      "pageId": "moderate-planting",
+      "imageId": "1a7i3wb-PikERII9OJQya9Z2aKI8FU1Id",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1a7i3wb-PikERII9OJQya9Z2aKI8FU1Id&sz=w800",
+      "caption": "學生展示尚Cafe裝飾盆栽",
       "order": 1008,
       "published": true
     },
     {
-      "id": "moderate-planting-18_l9wAkTvd2zWuX970K-H3_L-1aXSzIi",
+      "id": "moderate-planting-1m3HPP0iiXYTR3xwo7Kfy8y54rbhDVZeE",
       "pageId": "moderate-planting",
-      "imageId": "18_l9wAkTvd2zWuX970K-H3_L-1aXSzIi",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=18_l9wAkTvd2zWuX970K-H3_L-1aXSzIi&sz=w800",
-      "caption": "IMG_0695",
+      "imageId": "1m3HPP0iiXYTR3xwo7Kfy8y54rbhDVZeE",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1m3HPP0iiXYTR3xwo7Kfy8y54rbhDVZeE&sz=w800",
+      "caption": "食用花點綴意粉菜式",
       "order": 1009,
       "published": true
     },
     {
-      "id": "moderate-planting-19A8BmQM-drAks8fRvQ-sblhJCjulcSpO",
+      "id": "moderate-planting-1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB",
       "pageId": "moderate-planting",
-      "imageId": "19A8BmQM-drAks8fRvQ-sblhJCjulcSpO",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=19A8BmQM-drAks8fRvQ-sblhJCjulcSpO&sz=w800",
-      "caption": "IMG_0492",
+      "imageId": "1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB&sz=w800",
+      "caption": "學生合作栽種植物幼苗",
       "order": 1010,
       "published": true
     },
     {
-      "id": "moderate-planting-1zzrO3WPWXwOvwyVgsH820G8NwaR7eu_b",
+      "id": "moderate-planting-1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO",
       "pageId": "moderate-planting",
-      "imageId": "1zzrO3WPWXwOvwyVgsH820G8NwaR7eu_b",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1zzrO3WPWXwOvwyVgsH820G8NwaR7eu_b&sz=w800",
-      "caption": "IMG_0741",
+      "imageId": "1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO&sz=w800",
+      "caption": "學生合作整理種植箱泥土",
       "order": 1011,
       "published": true
     },
@@ -1050,7 +1104,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-planting",
       "imageId": "1BNE2PlbFnC0ILAXMiY3t7D35NnYoiDx7",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1BNE2PlbFnC0ILAXMiY3t7D35NnYoiDx7&sz=w800",
-      "caption": "IMG_4349",
+      "caption": "老師指導學生為盆栽澆水",
       "order": 1012,
       "published": true
     },
@@ -1059,44 +1113,62 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-planting",
       "imageId": "1D98Vy4qqfFC2HHYIy3VOYwZGQnBgt20z",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1D98Vy4qqfFC2HHYIy3VOYwZGQnBgt20z&sz=w800",
-      "caption": "IMG_4348",
+      "caption": "學生為盆栽加入泥土",
       "order": 1013,
       "published": true
     },
     {
-      "id": "moderate-planting-1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB",
+      "id": "moderate-planting-1zzrO3WPWXwOvwyVgsH820G8NwaR7eu_b",
       "pageId": "moderate-planting",
-      "imageId": "1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1-LplBh0fGDYEFGU34Rj_DWjD0YdC2zEB&sz=w800",
-      "caption": "IMG_5901",
+      "imageId": "1zzrO3WPWXwOvwyVgsH820G8NwaR7eu_b",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1zzrO3WPWXwOvwyVgsH820G8NwaR7eu_b&sz=w800",
+      "caption": "學生修剪天台植物枝葉",
       "order": 1014,
       "published": true
     },
     {
-      "id": "moderate-planting-1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO",
+      "id": "moderate-planting-1EZkIYsPlVlGTxvsrQNy5fGREP3I38V8N",
       "pageId": "moderate-planting",
-      "imageId": "1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1c4PUcsraG-NJ3LWlJdiTTenvPOzM5nqO&sz=w800",
-      "caption": "IMG_5898",
+      "imageId": "1EZkIYsPlVlGTxvsrQNy5fGREP3I38V8N",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1EZkIYsPlVlGTxvsrQNy5fGREP3I38V8N&sz=w800",
+      "caption": "尚Cafe擺放水仙花盆栽",
       "order": 1015,
       "published": true
     },
     {
-      "id": "moderate-art-development-14fnL_Kq5mhZEa3BQD2-nQykkwAeRWirr",
-      "pageId": "moderate-art-development",
-      "imageId": "14fnL_Kq5mhZEa3BQD2-nQykkwAeRWirr",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=14fnL_Kq5mhZEa3BQD2-nQykkwAeRWirr&sz=w800",
-      "caption": "IMG_8241",
-      "order": 1000,
+      "id": "moderate-planting-18_l9wAkTvd2zWuX970K-H3_L-1aXSzIi",
+      "pageId": "moderate-planting",
+      "imageId": "18_l9wAkTvd2zWuX970K-H3_L-1aXSzIi",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=18_l9wAkTvd2zWuX970K-H3_L-1aXSzIi&sz=w800",
+      "caption": "學生展示天台種植收成",
+      "order": 1016,
       "published": true
     },
     {
-      "id": "moderate-art-development-15376X3qFuVehghIoaoAnBxj0uMKaC9dc",
-      "pageId": "moderate-art-development",
-      "imageId": "15376X3qFuVehghIoaoAnBxj0uMKaC9dc",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=15376X3qFuVehghIoaoAnBxj0uMKaC9dc&sz=w800",
-      "caption": "IMG_9582",
-      "order": 1001,
+      "id": "moderate-planting-19A8BmQM-drAks8fRvQ-sblhJCjulcSpO",
+      "pageId": "moderate-planting",
+      "imageId": "19A8BmQM-drAks8fRvQ-sblhJCjulcSpO",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=19A8BmQM-drAks8fRvQ-sblhJCjulcSpO&sz=w800",
+      "caption": "學生觀察天台種植植物生長",
+      "order": 1017,
+      "published": true
+    },
+    {
+      "id": "moderate-planting-1nQfGvyPdtkJNXrzDByiUPtC5MlUTZLId",
+      "pageId": "moderate-planting",
+      "imageId": "1nQfGvyPdtkJNXrzDByiUPtC5MlUTZLId",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1nQfGvyPdtkJNXrzDByiUPtC5MlUTZLId&sz=w800",
+      "caption": "尚Cafe餐桌擺放鮮花裝飾",
+      "order": 1018,
+      "published": true
+    },
+    {
+      "id": "moderate-planting-1eKCM29DOb6J9rcEV89BxNkwGyVu0DjiK",
+      "pageId": "moderate-planting",
+      "imageId": "1eKCM29DOb6J9rcEV89BxNkwGyVu0DjiK",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1eKCM29DOb6J9rcEV89BxNkwGyVu0DjiK&sz=w800",
+      "caption": "食用花裝飾咖啡店飲品",
+      "order": 1019,
       "published": true
     },
     {
@@ -1104,8 +1176,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-art-development",
       "imageId": "1w9mmGkcNlt7OpaObzJuL4DrpyiuHzOHP",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1w9mmGkcNlt7OpaObzJuL4DrpyiuHzOHP&sz=w800",
-      "caption": "IMG_5585",
-      "order": 1002,
+      "caption": "學生使用拓印技術製作圖案",
+      "order": 1000,
       "published": true
     },
     {
@@ -1113,8 +1185,44 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-art-development",
       "imageId": "1fcBVN-GtorhdUPTZ5B2WA_dJiEneXCLl",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1fcBVN-GtorhdUPTZ5B2WA_dJiEneXCLl&sz=w800",
-      "caption": "IMG_5577",
+      "caption": "學生專注拓印藝術作品",
+      "order": 1001,
+      "published": true
+    },
+    {
+      "id": "moderate-art-development-15376X3qFuVehghIoaoAnBxj0uMKaC9dc",
+      "pageId": "moderate-art-development",
+      "imageId": "15376X3qFuVehghIoaoAnBxj0uMKaC9dc",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=15376X3qFuVehghIoaoAnBxj0uMKaC9dc&sz=w800",
+      "caption": "學生創作藝術圖案",
+      "order": 1002,
+      "published": true
+    },
+    {
+      "id": "moderate-art-development-14auDRPdTkSK0-O-tAZe1nz_ED8lL4kjS",
+      "pageId": "moderate-art-development",
+      "imageId": "14auDRPdTkSK0-O-tAZe1nz_ED8lL4kjS",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=14auDRPdTkSK0-O-tAZe1nz_ED8lL4kjS&sz=w800",
+      "caption": "學生排列材料製作藝術作品",
       "order": 1003,
+      "published": true
+    },
+    {
+      "id": "moderate-art-development-1m5MPil0wKM6euULTPAMOd2vVJqMhvDR1",
+      "pageId": "moderate-art-development",
+      "imageId": "1m5MPil0wKM6euULTPAMOd2vVJqMhvDR1",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1m5MPil0wKM6euULTPAMOd2vVJqMhvDR1&sz=w800",
+      "caption": "學生設計串珠藝術圖案",
+      "order": 1004,
+      "published": true
+    },
+    {
+      "id": "moderate-art-development-14fnL_Kq5mhZEa3BQD2-nQykkwAeRWirr",
+      "pageId": "moderate-art-development",
+      "imageId": "14fnL_Kq5mhZEa3BQD2-nQykkwAeRWirr",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=14fnL_Kq5mhZEa3BQD2-nQykkwAeRWirr&sz=w800",
+      "caption": "學生繪畫藝術創作草圖",
+      "order": 1005,
       "published": true
     },
     {
@@ -1122,8 +1230,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-art-development",
       "imageId": "1DpxCXi2AHR33vuMDhy3P5_GmIAKsMaCL",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1DpxCXi2AHR33vuMDhy3P5_GmIAKsMaCL&sz=w800",
-      "caption": "IMG_5231",
-      "order": 1004,
+      "caption": "學生設計手工藝術作品",
+      "order": 1006,
       "published": true
     },
     {
@@ -1131,8 +1239,35 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-art-development",
       "imageId": "1mIiNwaLdxhJIDfzpDZ6kIIGHiLj4PvCy",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1mIiNwaLdxhJIDfzpDZ6kIIGHiLj4PvCy&sz=w800",
-      "caption": "IMG_5230",
-      "order": 1005,
+      "caption": "學生製作小型手工飾物",
+      "order": 1007,
+      "published": true
+    },
+    {
+      "id": "moderate-art-development-1Zftv80qukYMoTxwaOaoM1lBYS_i9ZHCf",
+      "pageId": "moderate-art-development",
+      "imageId": "1Zftv80qukYMoTxwaOaoM1lBYS_i9ZHCf",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1Zftv80qukYMoTxwaOaoM1lBYS_i9ZHCf&sz=w800",
+      "caption": "學生展示手鏈藝術作品",
+      "order": 1008,
+      "published": true
+    },
+    {
+      "id": "moderate-community-exploration-1Vo2mHIrG46pRiricBn6y9gdeKG1JXoWE",
+      "pageId": "moderate-community-exploration",
+      "imageId": "1Vo2mHIrG46pRiricBn6y9gdeKG1JXoWE",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1Vo2mHIrG46pRiricBn6y9gdeKG1JXoWE&sz=w800",
+      "caption": "學生於尚Cafe用餐前合照",
+      "order": 1000,
+      "published": true
+    },
+    {
+      "id": "moderate-community-exploration-18215yxaWhAZ2606QN9UfKRT-WSR2kZNy",
+      "pageId": "moderate-community-exploration",
+      "imageId": "18215yxaWhAZ2606QN9UfKRT-WSR2kZNy",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=18215yxaWhAZ2606QN9UfKRT-WSR2kZNy&sz=w800",
+      "caption": "學生使用尚Cafe自助點餐螢幕",
+      "order": 1001,
       "published": true
     },
     {
@@ -1140,8 +1275,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-community-exploration",
       "imageId": "1nLrZBj-90l_P2nw3Yk9N3VGlHKFlCELN",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1nLrZBj-90l_P2nw3Yk9N3VGlHKFlCELN&sz=w800",
-      "caption": "IMG_8524",
-      "order": 1000,
+      "caption": "學生到訪社區服務設施合照",
+      "order": 1002,
       "published": true
     },
     {
@@ -1149,8 +1284,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-community-exploration",
       "imageId": "18ae15PmIINSJFqdJdE3fmPO8uAG1USJe",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=18ae15PmIINSJFqdJdE3fmPO8uAG1USJe&sz=w800",
-      "caption": "IMG_6307",
-      "order": 1001,
+      "caption": "學生體驗社區健身設施",
+      "order": 1003,
       "published": true
     },
     {
@@ -1158,8 +1293,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-community-exploration",
       "imageId": "1j1_MJcZhFGYceQ9-tVXur9cQDweyZF2R",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1j1_MJcZhFGYceQ9-tVXur9cQDweyZF2R&sz=w800",
-      "caption": "IMG_6306",
-      "order": 1002,
+      "caption": "學生體驗社區遊樂設施",
+      "order": 1004,
       "published": true
     },
     {
@@ -1167,8 +1302,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-community-exploration",
       "imageId": "1cak3XG4P7uzpv3uuFit9imYoY8PlWCmS",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1cak3XG4P7uzpv3uuFit9imYoY8PlWCmS&sz=w800",
-      "caption": "IMG_6292",
-      "order": 1003,
+      "caption": "學生在社區涼亭休息觀察",
+      "order": 1005,
       "published": true
     },
     {
@@ -1176,17 +1311,71 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-community-exploration",
       "imageId": "1PLMqMmFvEaSjoVIl6m6nN8RRqFY-sfFD",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1PLMqMmFvEaSjoVIl6m6nN8RRqFY-sfFD&sz=w800",
-      "caption": "IMG_6273",
-      "order": 1004,
+      "caption": "學生到社區公園進行探索",
+      "order": 1006,
       "published": true
     },
     {
-      "id": "moderate-independent-living-1DYqWoaHHuVtIkU7VgqiH-6Ki19m7l-NE",
+      "id": "moderate-community-exploration-1DQdgVs-eKdyC6Lxkac4P2Pge4BYTdHS5",
+      "pageId": "moderate-community-exploration",
+      "imageId": "1DQdgVs-eKdyC6Lxkac4P2Pge4BYTdHS5",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1DQdgVs-eKdyC6Lxkac4P2Pge4BYTdHS5&sz=w800",
+      "caption": "學生整理尚Cafe用餐座位",
+      "order": 1007,
+      "published": true
+    },
+    {
+      "id": "moderate-community-exploration-1prsa3CqQh6SkPNVVvVeRMwY-d3eBxxA_",
+      "pageId": "moderate-community-exploration",
+      "imageId": "1prsa3CqQh6SkPNVVvVeRMwY-d3eBxxA_",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1prsa3CqQh6SkPNVVvVeRMwY-d3eBxxA_&sz=w800",
+      "caption": "學生在尚Cafe品嚐餐點",
+      "order": 1008,
+      "published": true
+    },
+    {
+      "id": "moderate-community-exploration-1VjmHBhBnDW_nj65yxfpA2c8Do38o5OYX",
+      "pageId": "moderate-community-exploration",
+      "imageId": "1VjmHBhBnDW_nj65yxfpA2c8Do38o5OYX",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1VjmHBhBnDW_nj65yxfpA2c8Do38o5OYX&sz=w800",
+      "caption": "學生在尚Cafe練習付款取餐",
+      "order": 1009,
+      "published": true
+    },
+    {
+      "id": "moderate-community-exploration-1HxiImTVGo9pk11-XvK9ct-INDfkGThcg",
+      "pageId": "moderate-community-exploration",
+      "imageId": "1HxiImTVGo9pk11-XvK9ct-INDfkGThcg",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1HxiImTVGo9pk11-XvK9ct-INDfkGThcg&sz=w800",
+      "caption": "學生在尚Cafe練習使用餐具",
+      "order": 1010,
+      "published": true
+    },
+    {
+      "id": "moderate-community-exploration-1NXDG6nL59Z_sm2XTLGjvdKjkiByvbvGo",
+      "pageId": "moderate-community-exploration",
+      "imageId": "1NXDG6nL59Z_sm2XTLGjvdKjkiByvbvGo",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1NXDG6nL59Z_sm2XTLGjvdKjkiByvbvGo&sz=w800",
+      "caption": "老師指導學生在尚Cafe用餐",
+      "order": 1011,
+      "published": true
+    },
+    {
+      "id": "moderate-independent-living-11GFW3gdoK5Oz2dFSzJfgExAxvuV9Ie56",
       "pageId": "moderate-independent-living",
-      "imageId": "1DYqWoaHHuVtIkU7VgqiH-6Ki19m7l-NE",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1DYqWoaHHuVtIkU7VgqiH-6Ki19m7l-NE&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (11)",
+      "imageId": "11GFW3gdoK5Oz2dFSzJfgExAxvuV9Ie56",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=11GFW3gdoK5Oz2dFSzJfgExAxvuV9Ie56&sz=w800",
+      "caption": "學生製作吞拿魚餅乾小食",
       "order": 1000,
+      "published": true
+    },
+    {
+      "id": "moderate-independent-living-1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen",
+      "pageId": "moderate-independent-living",
+      "imageId": "1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen&sz=w800",
+      "caption": "學生為三文治加入吞拿魚餡料",
+      "order": 1001,
       "published": true
     },
     {
@@ -1194,16 +1383,7 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-independent-living",
       "imageId": "1SdOLdnMSeUZiTG-tyAx2MQ-2Wip7S8zB",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1SdOLdnMSeUZiTG-tyAx2MQ-2Wip7S8zB&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (9)",
-      "order": 1001,
-      "published": true
-    },
-    {
-      "id": "moderate-independent-living-1cRgCV13cSoR8ZPR9i79wptAeJBSZHds2",
-      "pageId": "moderate-independent-living",
-      "imageId": "1cRgCV13cSoR8ZPR9i79wptAeJBSZHds2",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1cRgCV13cSoR8ZPR9i79wptAeJBSZHds2&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (10)",
+      "caption": "學生整理三文治製作材料",
       "order": 1002,
       "published": true
     },
@@ -1212,17 +1392,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-independent-living",
       "imageId": "1T0Ol0sHOO3Wc-d8VTfSair3PruXVARF5",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1T0Ol0sHOO3Wc-d8VTfSair3PruXVARF5&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (8)",
+      "caption": "學生按步驟準備三文治配料",
       "order": 1003,
-      "published": true
-    },
-    {
-      "id": "moderate-independent-living-11GFW3gdoK5Oz2dFSzJfgExAxvuV9Ie56",
-      "pageId": "moderate-independent-living",
-      "imageId": "11GFW3gdoK5Oz2dFSzJfgExAxvuV9Ie56",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=11GFW3gdoK5Oz2dFSzJfgExAxvuV9Ie56&sz=w800",
-      "caption": "學生於個人成長課學習製作吞拿魚餅乾",
-      "order": 1004,
       "published": true
     },
     {
@@ -1230,8 +1401,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-independent-living",
       "imageId": "1jW03ZPzbkLhvmR5D-5HUypR_5UpKT0Y7",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1jW03ZPzbkLhvmR5D-5HUypR_5UpKT0Y7&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (7)",
-      "order": 1005,
+      "caption": "學生把番茄片加入三文治",
+      "order": 1004,
       "published": true
     },
     {
@@ -1239,26 +1410,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-independent-living",
       "imageId": "1yoG1ywsmk0io7-gSbWncwYFWgHLhlWLi",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1yoG1ywsmk0io7-gSbWncwYFWgHLhlWLi&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (6)",
-      "order": 1006,
-      "published": true
-    },
-    {
-      "id": "moderate-independent-living-1CTEwGQxGz-GBDL4PDYZKLlJbf9aqOMf7",
-      "pageId": "moderate-independent-living",
-      "imageId": "1CTEwGQxGz-GBDL4PDYZKLlJbf9aqOMf7",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1CTEwGQxGz-GBDL4PDYZKLlJbf9aqOMf7&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (2)",
-      "order": 1007,
-      "published": true
-    },
-    {
-      "id": "moderate-independent-living-1YnXriPOeYn5pZemUj_8kGlz4ve4YFS6o",
-      "pageId": "moderate-independent-living",
-      "imageId": "1YnXriPOeYn5pZemUj_8kGlz4ve4YFS6o",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1YnXriPOeYn5pZemUj_8kGlz4ve4YFS6o&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (1)",
-      "order": 1008,
+      "caption": "學生切開三文治麵包",
+      "order": 1005,
       "published": true
     },
     {
@@ -1266,8 +1419,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-independent-living",
       "imageId": "1GQg7ujZThY3vl8f2Fz-wn6zLah25C2Qf",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1GQg7ujZThY3vl8f2Fz-wn6zLah25C2Qf&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (5)",
-      "order": 1009,
+      "caption": "學生展示夾好的三文治",
+      "order": 1006,
       "published": true
     },
     {
@@ -1275,8 +1428,8 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-independent-living",
       "imageId": "180G_VlSlRgYxTcSXEBUIQQJCfQ0q82NA",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=180G_VlSlRgYxTcSXEBUIQQJCfQ0q82NA&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (4)",
-      "order": 1010,
+      "caption": "學生舀出餡料製作三文治",
+      "order": 1007,
       "published": true
     },
     {
@@ -1284,16 +1437,43 @@ window.QEF_SITE_CONFIG = {
       "pageId": "moderate-independent-living",
       "imageId": "1JsqYa1UwxiZPIMVROoH0whTHNvB-jz4c",
       "thumbnailUrl": "https://drive.google.com/thumbnail?id=1JsqYa1UwxiZPIMVROoH0whTHNvB-jz4c&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治 (3)",
+      "caption": "學生展示完成的三文治",
+      "order": 1008,
+      "published": true
+    },
+    {
+      "id": "moderate-independent-living-1CTEwGQxGz-GBDL4PDYZKLlJbf9aqOMf7",
+      "pageId": "moderate-independent-living",
+      "imageId": "1CTEwGQxGz-GBDL4PDYZKLlJbf9aqOMf7",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1CTEwGQxGz-GBDL4PDYZKLlJbf9aqOMf7&sz=w800",
+      "caption": "學生在老師指導下準備三文治",
+      "order": 1009,
+      "published": true
+    },
+    {
+      "id": "moderate-independent-living-1DYqWoaHHuVtIkU7VgqiH-6Ki19m7l-NE",
+      "pageId": "moderate-independent-living",
+      "imageId": "1DYqWoaHHuVtIkU7VgqiH-6Ki19m7l-NE",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1DYqWoaHHuVtIkU7VgqiH-6Ki19m7l-NE&sz=w800",
+      "caption": "學生準備三文治小食材料",
+      "order": 1010,
+      "published": true
+    },
+    {
+      "id": "moderate-independent-living-1cRgCV13cSoR8ZPR9i79wptAeJBSZHds2",
+      "pageId": "moderate-independent-living",
+      "imageId": "1cRgCV13cSoR8ZPR9i79wptAeJBSZHds2",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1cRgCV13cSoR8ZPR9i79wptAeJBSZHds2&sz=w800",
+      "caption": "學生在麵包上塗抹三文治醬料",
       "order": 1011,
       "published": true
     },
     {
-      "id": "moderate-independent-living-1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen",
+      "id": "moderate-independent-living-1YnXriPOeYn5pZemUj_8kGlz4ve4YFS6o",
       "pageId": "moderate-independent-living",
-      "imageId": "1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen",
-      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1g_1d8_YQ9Ww0VMt18xxl2B8bW_9goVen&sz=w800",
-      "caption": "學生於個人成長課學習製作三文治",
+      "imageId": "1YnXriPOeYn5pZemUj_8kGlz4ve4YFS6o",
+      "thumbnailUrl": "https://drive.google.com/thumbnail?id=1YnXriPOeYn5pZemUj_8kGlz4ve4YFS6o&sz=w800",
+      "caption": "學生把三文治餡料放到麵包上",
       "order": 1012,
       "published": true
     },
